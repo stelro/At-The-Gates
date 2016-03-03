@@ -15,7 +15,7 @@ namespace  tok {
 
     void MainClass::GameLoop() {
 
-        while (true) {
+        while (csdl_setup->GetMainEvent()-> type != SDL_QUIT) {
 
             csdl_setup->SdlBegin();
 
