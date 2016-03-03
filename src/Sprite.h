@@ -53,9 +53,9 @@ namespace tok {
         void SetOrigin(double passedX, double passedY);
         void PlayAnimation(int beginFrame, int endFrame, int row, int speed);
         void SetupAnimation(int passedX, int passedY);
+        void Draw();
+        void DrawSteady();
         SDL_Rect GetPositionRect();
-
-
 
     };
 

@@ -123,7 +123,24 @@ namespace tok {
     }
 
 
+    void Sprite::Draw() {
 
+        cameraRect.x = t_Rect.x + *CameraX;
+        cameraRect.y = t_Rect.y + *CameraY;
 
+        SDL_RenderCopy(renderer,texture,&cropRect,&cameraRect);
 
+    }
+
+    void Sprite::DrawSteady() {
+
+        //With this method, main character wont be affected of
+        //the camera.
+
+        SDL_RenderCopy(renderer,texture,&cropRect,&t_Rect);
+    }
+
+    Sprite::~Sprite() {
+        SDL_DestroyTexture(texture);
+    }
 }

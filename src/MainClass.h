@@ -1,6 +1,12 @@
-//
-// Created by stel on 2/3/2016.
-//
+/*
+ * src/MainClass.h
+ *
+ * Copyright (c) 2016 Stelmach Rostislav
+ *
+ * This is the MainClass, contain the GAmeLoop function
+ * and also manges the statemachine functions
+ *
+ */
 
 #ifndef TOK_MAINCLASS_H
 #define TOK_MAINCLASS_H
@@ -15,16 +21,6 @@
 
 const int FRAMES_PER_SECOND = 26;
 
-enum States {
-    EXIT_STATE,
-    NULL_STATE,
-    MENU_STATE,
-    LOCALMAP_STATE,
-    GAME_STATE,
-    FIGHT_STATE,
-    WORLDMAP_STATE
-};
-
 namespace tok {
 
     class MainClass {
@@ -33,7 +29,7 @@ namespace tok {
         std::stack<StateMachine*> stateStack;
         Timer fps;
     public:
-        MainClass(const char *title, int possitionX, int possitionY,
+        MainClass(const std::string &title, int possitionX, int possitionY,
                     int passedWidth, int passedHeight);
         void ChangeState(StateMachine *stateMachine);
         void PushState(StateMachine *state);

@@ -1,6 +1,12 @@
-//
-// Created by stel on 2/3/2016.
-//
+/*
+ * src/SdlInitializer.h
+ *
+ * Copyright (c) 2016 Stelmach Rostislav
+ *
+ * Initialize SDL2 with the passed flags,
+ * creates and initialize main window, renderer and main_event handler!
+ *
+ */
 
 #ifndef TOK_SDLINITIALIZER_H
 #define TOK_SDLINITIALIZER_H
@@ -21,7 +27,7 @@ namespace tok {
         SDL_Event *main_event;
     public:
         SdlInitializer();
-        SdlInitializer(Uint32 flags,const char *title, const uint32_t pos_x, const uint32_t pos_y,
+        SdlInitializer(Uint32 flags,const std::string &title, const uint32_t pos_x, const uint32_t pos_y,
                        const uint32_t passed_weight, const uint32_t passed_height) throw(ErrorHandler);
         SdlInitializer &operator =(const SdlInitializer&) = delete;
         SdlInitializer(const SdlInitializer&) = delete;

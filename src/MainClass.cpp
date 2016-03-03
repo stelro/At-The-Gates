@@ -1,12 +1,18 @@
-//
-// Created by stel on 2/3/2016.
-//
+/*
+ * src/MainClass.cpp
+ *
+ * Copyright (c) 2016 Stelmach Rostislav
+ *
+ * This is the MainClass, contain the GAmeLoop function
+ * and also manges the statemachine functions
+ *
+ */
 
 #include "MainClass.h"
 
 namespace  tok {
 
-    MainClass::MainClass(const char *title, int possitionX, int possitionY, int passedWidth, int passedHeight) {
+    MainClass::MainClass(const std::string &title, int possitionX, int possitionY, int passedWidth, int passedHeight) {
 
         csdl_setup = new SdlInitializer(SDL_INIT_EVERYTHING,title,
         possitionX, possitionY, passedWidth, passedHeight);
