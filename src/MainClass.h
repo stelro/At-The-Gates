@@ -15,9 +15,11 @@
 #include <string>
 #include <iostream>
 
+#include "ErrorHandler.h"
 #include "StateMachine.h"
 #include "SdlInitializer.h"
 #include "Timer.h"
+#include "Locamap.h"
 
 const int FRAMES_PER_SECOND = 26;
 
@@ -28,9 +30,17 @@ namespace tok {
         SdlInitializer *csdl_setup;
         std::stack<StateMachine*> stateStack;
         Timer fps;
+
+        double CameraX;
+        double CameraY;
+        int MouseX;
+        int MouseY;
+
+        Localmap *localmap;
     public:
         MainClass(const std::string &title, int possitionX, int possitionY,
                     int passedWidth, int passedHeight);
+        ~MainClass();
         void ChangeState(StateMachine *stateMachine);
         void PushState(StateMachine *state);
         void PopState();

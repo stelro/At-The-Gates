@@ -6,16 +6,16 @@
 
 namespace tok {
 
-    Sprite::Sprite(SDL_Renderer *passed_renderer, const std::string &filePath, int passedX, int passedY,
+    Sprite::Sprite(SDL_Renderer *passed_renderer, const std::string filePath, int passedX, int passedY,
                    int passedWidth, int passedHeight, double *passedCameraX, double *passedCameraY) :
-    renderer(passed_renderer), texture(nullptr)
+    renderer(passed_renderer)
 
     {
-
+        texture = nullptr;
         texture = IMG_LoadTexture(renderer, filePath.c_str());
 
         if (texture == nullptr) {
-            std::cerr << "Couldn't load image" << std::endl;
+            std::cerr << "Couldn't load image, path: " << filePath << std::endl;
         }
 
         //texture rectangle
@@ -45,8 +45,8 @@ namespace tok {
         CameraX = passedCameraX;
         CameraY = passedCameraY;
 
-        cameraRect.x = t_Rect.x + *CameraX;
-        cameraRect.y = t_Rect.y + *CameraY;
+        cameraRect.x = t_Rect.x + (int)*CameraX;
+        cameraRect.y = t_Rect.y + (int)*CameraY;
         cameraRect.w = t_Rect.w;
         cameraRect.h = t_Rect.h;
 
@@ -55,18 +55,19 @@ namespace tok {
     void Sprite::PlayAnimation(int beginFrame, int endFrame, int row, int speed) {
 
         if (animationDelay + speed < SDL_GetTicks()) {
-            currentFrame = beginFrame;
-        }
-        else {
-            currentFrame++;
-        }
+            if (endFrame <= currentFrame)
+                currentFrame = beginFrame;
+            else
+                currentFrame++;
 
-        cropRect.x = currentFrame * ( textureWidth / frameAmountX);
-        cropRect.y = row * ( textureHeight / frameAmountY);
-        cropRect.w = textureWidth / frameAmountX;
-        cropRect.y = textureHeight / frameAmountY;
 
-        animationDelay = SDL_GetTicks();
+            cropRect.x = currentFrame * (textureWidth / frameAmountX);
+            cropRect.y = row * (textureHeight / frameAmountY);
+            cropRect.w = textureWidth / frameAmountX;
+            cropRect.h = textureHeight / frameAmountY;
+
+            animationDelay = SDL_GetTicks();
+        }
     }
 
     void Sprite::SetX(double passedX) {
@@ -125,8 +126,8 @@ namespace tok {
 
     void Sprite::Draw() {
 
-        cameraRect.x = t_Rect.x + *CameraX;
-        cameraRect.y = t_Rect.y + *CameraY;
+        cameraRect.x = t_Rect.x + (int)*CameraX;
+        cameraRect.y = t_Rect.y + (int)*CameraY;
 
         SDL_RenderCopy(renderer,texture,&cropRect,&cameraRect);
 

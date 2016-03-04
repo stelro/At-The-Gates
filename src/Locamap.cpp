@@ -6,9 +6,9 @@
 
 namespace tok {
 
-    Localmap::Localmap(int screenWidth, int screenHeight, double *passedCameraX, double *passedCameraY,
-                       SdlInitializer *passed_csdl_setup) :
-    csdl_setup(passed_csdl_setup), CameraX(passedCameraX), CameraY(passedCameraY)
+    Localmap::Localmap(SdlInitializer *passed_csdl_setup,int screenWidth, int screenHeight, double *passedCameraX, double *passedCameraY,
+                       int *passedMouseX, int *passedMouseY) :
+    csdl_setup(passed_csdl_setup), CameraX(passedCameraX), CameraY(passedCameraY), MouseX(passedMouseX), MouseY(passedMouseY)
     {
 
 
@@ -22,6 +22,8 @@ namespace tok {
         }
 
         onPress = false;
+
+        main_char = new MainCharacter(csdl_setup, MouseX, MouseY, CameraX, CameraY);
     }
 
     Localmap::~Localmap() {
@@ -31,6 +33,8 @@ namespace tok {
                 delete backgroundImage[i][j];
             }
         }
+
+        delete main_char;
     }
 
     void Localmap::Update() {
@@ -39,6 +43,14 @@ namespace tok {
     }
 
     void Localmap::Render() {
-        
+
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 7; j++) {
+                backgroundImage[i][j]->Draw();
+            }
+        }
+
+        main_char->Draw();
+        main_char->Update();
     }
 }

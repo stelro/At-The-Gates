@@ -38,7 +38,7 @@ namespace tok {
         double xOrigin;
         double yOrigin;
     public:
-        Sprite(SDL_Renderer *passed_renderer, const std::string &filePath,int passedX,
+        Sprite(SDL_Renderer *passed_renderer, const std::string filePath,int passedX,
                 int passedY, int passedWidth, int passedHeight, double *passedCameraX, double *passedCameraY);
         ~Sprite();
         void SetX(double passedX);
