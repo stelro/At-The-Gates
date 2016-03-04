@@ -39,10 +39,11 @@ namespace  tok {
 
             localmap->Render();
             localmap->Update();
-//            //-----------------------------------------------------------
-//            if (fps.get_ticks() < 1000 / FRAMES_PER_SECOND)
-//                SDL_Delay((1000/FRAMES_PER_SECOND) - fps.get_ticks());
-//            //------------------------------------------------------------
+
+            //-----------------------------------------------------------
+            if (fps.get_ticks() < 1000 / FRAMES_PER_SECOND)
+                SDL_Delay((1000/FRAMES_PER_SECOND) - fps.get_ticks());
+            //------------------------------------------------------------
 
 
             csdl_setup->SdlEnd();

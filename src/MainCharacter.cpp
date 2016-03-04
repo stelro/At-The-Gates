@@ -53,7 +53,7 @@ namespace tok {
         //this is set when the character is not running
         //------------------------------------------------------
 
-        //std::cout << angle << std::endl;
+        std::cout << angle << std::endl;
 
         if (!stopAnimation) {
             if (angle > 45 &&  angle <= 135) {
@@ -91,29 +91,42 @@ namespace tok {
     }
 
     void MainCharacter::UpdateControllers() {
+
         if (csdl_setup->GetMainEvent()->type == SDL_MOUSEBUTTONDOWN ||
             csdl_setup->GetMainEvent()->type == SDL_MOUSEMOTION) {
 
-            if (csdl_setup->GetMainEvent()->button.button == SDL_BUTTON_LEFT) {
-                xFollowPoint = (int)*CameraX - *MouseX + 300;
-                yFollowPoint = (int)*CameraY - *MouseY + 250;
+            if(csdl_setup->GetMainEvent()->button.button == SDL_BUTTON_LEFT) {
+                xFollowPoint = *CameraX - *MouseX + 300;
+                yFollowPoint = *CameraY - *MouseY + 250;
                 follow = true;
             }
+
         }
 
-        if ((timeCheck + 10) < SDL_GetTicks() && follow) {
-            distance = GetDistance((int)*CameraX,(int)*CameraY,xFollowPoint,yFollowPoint);
+        if (timeCheck+10 < SDL_GetTicks() && follow) {
 
-            if (distance == 0) {
+            distance = GetDistance(*CameraX, *CameraY, xFollowPoint, yFollowPoint);
+
+            if (distance == 0)
                 stopAnimation = true;
-            }
-            else {
+            else
                 stopAnimation = false;
+
+            if (distance > 15 ) {
+
+                if (*CameraX != xFollowPoint) {
+                    *CameraX = (*CameraX - ((*CameraX - xFollowPoint) / distance ) * 1.5f );
+                }
+                if (*CameraY != yFollowPoint) {
+                    *CameraY = (*CameraY - ((*CameraY - yFollowPoint) / distance ) * 1.5f);
+                }
+
+                timeCheck = SDL_GetTicks();
             }
 
         }
 
-        timeCheck = SDL_GetTicks();
+
     }
 
     void MainCharacter::Update() {

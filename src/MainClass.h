@@ -20,8 +20,10 @@
 #include "SdlInitializer.h"
 #include "Timer.h"
 #include "Locamap.h"
+#include "MainCharacter.h"
 
-const int FRAMES_PER_SECOND = 26;
+
+const int FRAMES_PER_SECOND = 200;
 
 namespace tok {
 
@@ -37,6 +39,7 @@ namespace tok {
         int MouseY;
 
         Localmap *localmap;
+        MainCharacter *main_char;
     public:
         MainClass(const std::string &title, int possitionX, int possitionY,
                     int passedWidth, int passedHeight);

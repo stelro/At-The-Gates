@@ -8,10 +8,9 @@ namespace tok {
 
     Sprite::Sprite(SDL_Renderer *passed_renderer, const std::string filePath, int passedX, int passedY,
                    int passedWidth, int passedHeight, double *passedCameraX, double *passedCameraY) :
-    renderer(passed_renderer)
+    renderer(passed_renderer), texture(nullptr)
 
     {
-        texture = nullptr;
         texture = IMG_LoadTexture(renderer, filePath.c_str());
 
         if (texture == nullptr) {
