@@ -1,6 +1,12 @@
-//
-// Created by stel on 2/3/2016.
-//
+/*
+ * src/Timer.h
+ *
+ * Copyright (c) 2016 Stelmach Rostislav
+ *
+ * Timer, used to controls the *frame rate per second* fps
+ * in our game
+ *
+ */
 
 #ifndef TOK_TIMER_H
 #define TOK_TIMER_H

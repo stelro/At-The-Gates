@@ -1,6 +1,13 @@
-//
-// Created by stel on 2/3/2016.
-//
+/*
+ * src/ErrorHandler.h
+ *
+ * Copyright (c) 2016 Stelmach Rostislav
+ *
+ * This is the Error Handling class for SDL and
+ * Template of Katharsis game
+ * call What() for show exception error.
+ *
+ */
 
 #ifndef TOK_ERRORHANDLER_H
 #define TOK_ERRORHANDLER_H

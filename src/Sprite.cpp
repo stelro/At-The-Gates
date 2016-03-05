@@ -1,7 +1,12 @@
-//
-// Created by stel on 3/3/2016.
-//
-
+/*
+ * src/Sprite.cpp
+ *
+ * Copyright (c) 2016 Stelmach Rostislav
+ *
+ * Sprite class, used to "generate" all the sprites needed in
+ * game (main character,npc's, background, walls, trees, etc..)
+ *
+ */
 #include "Sprite.h"
 
 namespace tok {
@@ -51,7 +56,7 @@ namespace tok {
 
     }
 
-    void Sprite::PlayAnimation(int beginFrame, int endFrame, int row, int speed) {
+    void Sprite::PlayAnimation(int beginFrame, int endFrame, int row, unsigned speed) {
 
         if (animationDelay + speed < SDL_GetTicks()) {
             if (endFrame <= currentFrame)

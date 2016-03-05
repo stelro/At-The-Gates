@@ -1,16 +1,25 @@
-//
-// Created by stel on 4/3/2016.
-//
+/*
+ * src/MainCharacter.cpp
+ *
+ * Copyright (c) 2016 Stelmach Rostislav
+ *
+ * MainCharacter, controlls the main's character
+ * animatinos, mouse/move controllers and collision
+ * with 'Localmap' object's!
+ * The main character get rendered from Sprite class!
+ *
+ */
 
 #include "MainCharacter.h"
 
 namespace tok {
-    MainCharacter::MainCharacter(tok::SdlInitializer *passed_csdl_setup, int *passedMouseX, int *passedMouseY,
+    MainCharacter::MainCharacter(std::shared_ptr<SdlInitializer> passed_csdl_setup, int *passedMouseX, int *passedMouseY,
                                  double *passedCameraX, double *passedCameraY) :
-    PI(3.14159265359), csdl_setup(passed_csdl_setup), MouseX(passedMouseX), MouseY(passedMouseY) ,CameraX(passedCameraX), CameraY(passedCameraY),
+    csdl_setup(passed_csdl_setup), MouseX(passedMouseX), MouseY(passedMouseY) ,CameraX(passedCameraX), CameraY(passedCameraY),
     follow(false), stopAnimation(false)
     {
-        main_char = new Sprite(csdl_setup->GetRenderer(), "assets/death_scythe_ani.png", 300,250,50,80,
+
+        main_char = std::make_shared<Sprite>(csdl_setup->GetRenderer(), "assets/death_scythe_ani.png", 300,250,50,80,
                                 CameraX, CameraY);
 
         //----------------------------------
@@ -27,7 +36,7 @@ namespace tok {
     }
 
     MainCharacter::~MainCharacter() {
-        delete main_char;
+
     }
 
     void MainCharacter::Draw() {
@@ -53,7 +62,7 @@ namespace tok {
         //this is set when the character is not running
         //------------------------------------------------------
 
-        std::cout << angle << std::endl;
+        //std::cout << angle << std::endl;
 
         if (!stopAnimation) {
             if (angle > 45 &&  angle <= 135) {
@@ -96,8 +105,8 @@ namespace tok {
             csdl_setup->GetMainEvent()->type == SDL_MOUSEMOTION) {
 
             if(csdl_setup->GetMainEvent()->button.button == SDL_BUTTON_LEFT) {
-                xFollowPoint = *CameraX - *MouseX + 300;
-                yFollowPoint = *CameraY - *MouseY + 250;
+                xFollowPoint = (int)*CameraX - *MouseX + 300;
+                yFollowPoint = (int)*CameraY - *MouseY + 250;
                 follow = true;
             }
 
@@ -105,7 +114,7 @@ namespace tok {
 
         if (timeCheck+10 < SDL_GetTicks() && follow) {
 
-            distance = GetDistance(*CameraX, *CameraY, xFollowPoint, yFollowPoint);
+            distance = GetDistance((int)*CameraX, (int)*CameraY, xFollowPoint, yFollowPoint);
 
             if (distance == 0)
                 stopAnimation = true;
@@ -117,6 +126,7 @@ namespace tok {
                 if (*CameraX != xFollowPoint) {
                     *CameraX = (*CameraX - ((*CameraX - xFollowPoint) / distance ) * 1.5f );
                 }
+
                 if (*CameraY != yFollowPoint) {
                     *CameraY = (*CameraY - ((*CameraY - yFollowPoint) / distance ) * 1.5f);
                 }

@@ -1,26 +1,36 @@
-//
-// Created by stel on 4/3/2016.
-//
+/*
+ * src/MainCharacter.h
+ *
+ * Copyright (c) 2016 Stelmach Rostislav
+ *
+ * MainCharacter, controlls the main's character
+ * animatinos, mouse/move controllers and collision
+ * with 'Localmap' object's!
+ * The main character get rendered from Sprite class!
+ *
+ */
 
 #ifndef TOK_MAINCHARACTER_H
 #define TOK_MAINCHARACTER_H
 
 #include <cmath>
+#include <memory>
 
 #include "Sprite.h"
 #include "StateMachine.h"
 #include "SdlInitializer.h"
 
+const double PI = 3.14159265359;
+
 namespace tok {
 
     class MainCharacter {
-    public:
+    private:
         void UpdateAnimation();
         void UpdateControllers();
 
-    private:
-        Sprite *main_char;
-        SdlInitializer *csdl_setup;
+        std::shared_ptr<Sprite> main_char;
+        std::shared_ptr<SdlInitializer> csdl_setup;
 
         int *MouseX;
         int *MouseY;
@@ -36,10 +46,8 @@ namespace tok {
 
         double distance;
         bool stopAnimation;
-
-        const double PI;
     public:
-        MainCharacter(SdlInitializer *passed_csdl_setup, int *passedMouseX, int *passedMouseY,
+        MainCharacter(std::shared_ptr<SdlInitializer> passed_csdl_setup, int *passedMouseX, int *passedMouseY,
                     double *passedCameraX, double *passedCameraY);
         ~MainCharacter();
         void Update();

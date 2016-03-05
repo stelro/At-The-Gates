@@ -1,6 +1,14 @@
-//
-// Created by stel on 2/3/2016.
-//
+/*
+ * src/StateMachine.h
+ *
+ * Copyright (c) 2016 Stelmach Rostislav
+ *
+ * StateMachine, Abstract Class
+ * used to hold all the various modes of game,
+ * and allow us to move from one mode to another,
+ * and updates / renders whatever the current mode is.
+ *
+ */
 
 #ifndef TOK_STATEMACHINE_H
 #define TOK_STATEMACHINE_H

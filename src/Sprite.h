@@ -1,6 +1,12 @@
-//
-// Created by stel on 3/3/2016.
-//
+/*
+ * src/Sprite.h
+ *
+ * Copyright (c) 2016 Stelmach Rostislav
+ *
+ * Sprite class, used to "generate" all the sprites needed in
+ * game (main character,npc's, background, walls, trees, etc..)
+ *
+ */
 
 #ifndef TOK_SPRITE_H
 #define TOK_SPRITE_H
@@ -51,7 +57,7 @@ namespace tok {
         int GetWidth() const;
         int GetHeight() const;
         void SetOrigin(double passedX, double passedY);
-        void PlayAnimation(int beginFrame, int endFrame, int row, int speed);
+        void PlayAnimation(int beginFrame, int endFrame, int row, unsigned speed);
         void SetupAnimation(int passedX, int passedY);
         void Draw();
         void DrawSteady();

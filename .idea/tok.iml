@@ -5,7 +5,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/StateMachine.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Locamap.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Timer.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/StateInterface.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/SdlInitializer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/StateMachine.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Sprite.h" isTestSource="false" />
@@ -18,7 +17,6 @@
       <sourceFolder url="file://$MODULE_DIR$/src/Locamap.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/MainClass.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/ErrorHandler.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/StateInterface.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Sprite.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />

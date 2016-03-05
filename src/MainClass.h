@@ -3,8 +3,11 @@
  *
  * Copyright (c) 2016 Stelmach Rostislav
  *
- * This is the MainClass, contain the GAmeLoop function
- * and also manges the statemachine functions
+ * MainClass Class, contains the MOST Importan method,
+ * GameLoop method, which renders all the states and
+ * levels to the screen.
+ * Contains also the Statemachine stack , and varius
+ * methods to controlls the Statemachine stack!
  *
  */
 
@@ -14,6 +17,7 @@
 #include <stack>
 #include <string>
 #include <iostream>
+#include <memory>
 
 #include "ErrorHandler.h"
 #include "StateMachine.h"
@@ -29,7 +33,9 @@ namespace tok {
 
     class MainClass {
     private:
-        SdlInitializer *csdl_setup;
+        std::shared_ptr<SdlInitializer> csdl_setup;
+        std::shared_ptr<Localmap> localmap;
+
         std::stack<StateMachine*> stateStack;
         Timer fps;
 
@@ -38,8 +44,6 @@ namespace tok {
         int MouseX;
         int MouseY;
 
-        Localmap *localmap;
-        MainCharacter *main_char;
     public:
         MainClass(const std::string &title, int possitionX, int possitionY,
                     int passedWidth, int passedHeight);
