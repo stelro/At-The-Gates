@@ -20,6 +20,7 @@
 #include <SDL2/SDL.h>
 #include <string>
 #include <memory>
+#include <fstream>
 
 
 #include "SdlInitializer.h"
@@ -47,6 +48,7 @@ namespace tok {
     class Localmap : public StateMachine {
     private:
         void InitializeTiles();
+        void SetTiles();
         std::shared_ptr<SdlInitializer> csdl_setup;
         std::shared_ptr<Sprite> backgroundImage;
         std::shared_ptr<MainCharacter> main_char;
@@ -57,7 +59,8 @@ namespace tok {
         int *MouseX;
         int *MouseY;
 
-        Sprite *tiles[TOTAL_TILES];
+        Sprite *tiles[8][8];
+        SDL_Rect gTileClips[TOTAL_TILES];
 
 
     public:

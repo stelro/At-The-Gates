@@ -159,9 +159,9 @@ namespace tok {
         SDL_DestroyTexture(texture);
     }
 
-    Sprite::Sprite(SDL_Renderer *passed_renderer, const std::string filePath, int passedX, int passedY, int passedWidth,
-                   int passedHeight,int row, int col, double *passedCameraX, double *passedCameraY, int tileType) :
-    renderer(passed_renderer), texture(nullptr), tileType(tileType)
+    Sprite::Sprite(SDL_Renderer *passed_renderer,int tileType, SDL_Rect *tileClips, const std::string filePath, int passedX, int passedY,
+                   double *passedCameraX, double *passedCameraY) :
+    renderer(passed_renderer), texture(nullptr), _tileType(tileType)
     {
 
 
@@ -174,15 +174,15 @@ namespace tok {
 
         t_Rect.x = passedX;
         t_Rect.y = passedY;
-        t_Rect.w = passedWidth;
-        t_Rect.h = passedHeight;
+        t_Rect.w = tileClips[_tileType].w;
+        t_Rect.h = tileClips[_tileType].h;
 
         SDL_QueryTexture(texture,nullptr,nullptr,&textureWidth,&textureHeight);
 
-        cropRect.x = row;
-        cropRect.y = col;
-        cropRect.w = passedWidth;
-        cropRect.h = passedHeight;
+        cropRect.x = tileClips[_tileType].x;
+        cropRect.y = tileClips[_tileType].y;
+        cropRect.w = tileClips[_tileType].w;
+        cropRect.h = tileClips[_tileType].h;
 
 
         CameraX = passedCameraX;

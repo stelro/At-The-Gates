@@ -27,6 +27,25 @@ namespace tok {
         onPress = false;
 
         main_char = std::make_shared<MainCharacter>(csdl_setup, MouseX, MouseY, CameraX, CameraY);
+
+        SetTiles();
+
+        std::ifstream gg("assets/localmap.map");
+
+
+        int omg;
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+
+                gg >> omg;
+
+                std::cout << omg << std::endl;
+                    tiles[i][j] = new Sprite(csdl_setup->GetRenderer(), omg, gTileClips, "assets/assets.png",
+                                             80 * i, 80 * j, CameraX, CameraY);
+
+            }
+
+        }
     }
 
     Localmap::~Localmap() {
@@ -36,25 +55,39 @@ namespace tok {
 
     void Localmap::InitializeTiles() {
 
-        tiles[TILE_ROCKMAIN] = new Sprite(csdl_setup->GetRenderer(), "assets/assets.png",
-                                          TILE_ASSET_WIDTH ,TILE_ASSET_HEIGHT ,
-                                             TILE_WIDTH,TILE_HEIGHT,0,0,CameraX,CameraY,TILE_ROCKMAIN);
+        gTileClips[ TILE_ROCKMAIN ].x = 0;
+        gTileClips[ TILE_ROCKMAIN ].y = 0;
+        gTileClips[ TILE_ROCKMAIN ].w = TILE_WIDTH;
+        gTileClips[ TILE_ROCKMAIN ].h = TILE_HEIGHT;
 
-        tiles[TILE_ROCKCORN_LU] = new Sprite(csdl_setup->GetRenderer(), "assets/assets.png",
-                                             TILE_ASSET_WIDTH ,TILE_ASSET_HEIGHT ,
-                                             TILE_WIDTH,TILE_HEIGHT,0,80,CameraX,CameraY,TILE_ROCKCORN_LU);
+        gTileClips[ TILE_ROCKCORN_LU ].x = 0;
+        gTileClips[ TILE_ROCKCORN_LU ].y = 80;
+        gTileClips[ TILE_ROCKCORN_LU ].w = TILE_WIDTH;
+        gTileClips[ TILE_ROCKCORN_LU ].h = TILE_HEIGHT;
 
-        tiles[TILE_ROCKCORN_LD] = new Sprite(csdl_setup->GetRenderer(), "assets/assets.png",
-                                             TILE_ASSET_WIDTH ,TILE_ASSET_HEIGHT ,
-                                             TILE_WIDTH,TILE_HEIGHT,0,160,CameraX,CameraY,TILE_ROCKCORN_LD);
+        gTileClips[ TILE_ROCKCORN_LD ].x = 0;
+        gTileClips[ TILE_ROCKCORN_LD ].y = 160;
+        gTileClips[ TILE_ROCKCORN_LD ].w = TILE_WIDTH;
+        gTileClips[ TILE_ROCKCORN_LD ].h = TILE_HEIGHT;
 
-        tiles[TILE_ROCKCORN_RU] = new Sprite(csdl_setup->GetRenderer(), "assets/assets.png",
-                                             TILE_ASSET_WIDTH ,TILE_ASSET_HEIGHT ,
-                                             TILE_WIDTH,TILE_HEIGHT,80,80,CameraX,CameraY,TILE_ROCKCORN_RU);
+        gTileClips[ TILE_ROCKCORN_RU ].x = 80;
+        gTileClips[ TILE_ROCKCORN_RU ].y = 80;
+        gTileClips[ TILE_ROCKCORN_RU ].w = TILE_WIDTH;
+        gTileClips[ TILE_ROCKCORN_RU ].h = TILE_HEIGHT;
 
-        tiles[TILE_ROCKCORN_RD] = new Sprite(csdl_setup->GetRenderer(), "assets/assets.png",
-                                             TILE_ASSET_WIDTH ,TILE_ASSET_HEIGHT ,
-                                             TILE_WIDTH,TILE_HEIGHT,80,160,CameraX,CameraY,TILE_ROCKCORN_RD);
+        gTileClips[ TILE_ROCKCORN_RD ].x = 80;
+        gTileClips[ TILE_ROCKCORN_RD ].y = 160;
+        gTileClips[ TILE_ROCKCORN_RD ].w = TILE_WIDTH;
+        gTileClips[ TILE_ROCKCORN_RD ].h = TILE_HEIGHT;
+    }
+
+    void Localmap::SetTiles() {
+
+
+
+
+
+
     }
 
     void Localmap::Update() {
@@ -65,7 +98,11 @@ namespace tok {
     void Localmap::Render() {
 
 
-        tiles[TILE_ROCKMAIN]->Draw();
+      for ( int i = 0; i < 8; i++) {
+          for (int j = 0; j < 8; j++) {
+              tiles[i][j]->Draw();
+          }
+      }
 
         main_char->Draw();
         main_char->Update();
