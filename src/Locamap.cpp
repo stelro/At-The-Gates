@@ -30,22 +30,6 @@ namespace tok {
 
         SetTiles();
 
-        std::ifstream gg("assets/localmap.map");
-
-
-        int omg;
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-
-                gg >> omg;
-
-                std::cout << omg << std::endl;
-                    tiles[i][j] = new Sprite(csdl_setup->GetRenderer(), omg, gTileClips, "assets/assets.png",
-                                             80 * i, 80 * j, CameraX, CameraY);
-
-            }
-
-        }
     }
 
     Localmap::~Localmap() {
@@ -83,10 +67,26 @@ namespace tok {
 
     void Localmap::SetTiles() {
 
+        std::ifstream map("assets/localmap.map");
 
 
+        int tileType;
+        for (int i = 0; i < TILES_ROW; i++) {
+            for (int j = 0; j < TILES_COL; j++) {
 
+                map >> tileType;
 
+                std::cout << tileType << " ";
+
+                tiles[i][j] = std::make_shared<Sprite>(csdl_setup->GetRenderer(), tileType, gTileClips, "assets/assets.png",
+                                         TILE_WIDTH * j, TILE_HEIGHT * i, CameraX, CameraY);
+
+            }
+
+            std::cout << std::endl;
+        }
+
+        map.close();
 
     }
 
@@ -98,8 +98,8 @@ namespace tok {
     void Localmap::Render() {
 
 
-      for ( int i = 0; i < 8; i++) {
-          for (int j = 0; j < 8; j++) {
+      for ( int i = 0; i < TILES_ROW; i++) {
+          for (int j = 0; j < TILES_COL; j++) {
               tiles[i][j]->Draw();
           }
       }

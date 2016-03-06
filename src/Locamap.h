@@ -28,20 +28,28 @@
 #include "StateMachine.h"
 #include "MainCharacter.h"
 
-const int TILE_ASSET_WIDTH = 160;
-const int TILE_ASSET_HEIGHT = 240;
+//const int TILE_ASSET_WIDTH = 160;
+//const int TILE_ASSET_HEIGHT = 240;
+
+
+//------------------------------------
+//MAP SIZE, 12 x 16 , 192 TILES
+const int TILES_ROW = 12;
+const int TILES_COL = 16;
+//------------------------------------
+
 const int TILE_WIDTH = 80;
-const int TILE_HEIGHT = 80;
+const int TILE_HEIGHT = 79;
 
 const int TOTAL_TILES = 5;
 
 
 enum {
-    TILE_ROCKMAIN,
-    TILE_ROCKCORN_LU,
-    TILE_ROCKCORN_LD,
-    TILE_ROCKCORN_RU,
-    TILE_ROCKCORN_RD
+    TILE_ROCKMAIN = 0,
+    TILE_ROCKCORN_LU = 1,
+    TILE_ROCKCORN_LD = 2,
+    TILE_ROCKCORN_RU = 3,
+    TILE_ROCKCORN_RD = 4
 };
 
 namespace tok {
@@ -50,7 +58,6 @@ namespace tok {
         void InitializeTiles();
         void SetTiles();
         std::shared_ptr<SdlInitializer> csdl_setup;
-        std::shared_ptr<Sprite> backgroundImage;
         std::shared_ptr<MainCharacter> main_char;
 
         bool onPress;
@@ -59,7 +66,7 @@ namespace tok {
         int *MouseX;
         int *MouseY;
 
-        Sprite *tiles[8][8];
+        std::shared_ptr<Sprite> tiles[TILES_ROW][TILES_COL];
         SDL_Rect gTileClips[TOTAL_TILES];
 
 
