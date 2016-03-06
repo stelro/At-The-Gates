@@ -22,15 +22,7 @@ namespace tok {
     csdl_setup(passed_csdl_setup), CameraX(passedCameraX), CameraY(passedCameraY), MouseX(passedMouseX), MouseY(passedMouseY)
     {
 
-
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 7; j++) {
-
-                backgroundImage[i][j] = std::make_shared<Sprite>(csdl_setup->GetRenderer(), "assets/grass.bmp",
-                                                           screenWidth * i,screenHeight * j,
-                                                           screenWidth,screenHeight,CameraX,CameraY);
-            }
-        }
+        InitializeTiles();
 
         onPress = false;
 
@@ -42,6 +34,29 @@ namespace tok {
 
     }
 
+    void Localmap::InitializeTiles() {
+
+        tiles[TILE_ROCKMAIN] = new Sprite(csdl_setup->GetRenderer(), "assets/assets.png",
+                                          TILE_ASSET_WIDTH ,TILE_ASSET_HEIGHT ,
+                                             TILE_WIDTH,TILE_HEIGHT,0,0,CameraX,CameraY,TILE_ROCKMAIN);
+
+        tiles[TILE_ROCKCORN_LU] = new Sprite(csdl_setup->GetRenderer(), "assets/assets.png",
+                                             TILE_ASSET_WIDTH ,TILE_ASSET_HEIGHT ,
+                                             TILE_WIDTH,TILE_HEIGHT,0,80,CameraX,CameraY,TILE_ROCKCORN_LU);
+
+        tiles[TILE_ROCKCORN_LD] = new Sprite(csdl_setup->GetRenderer(), "assets/assets.png",
+                                             TILE_ASSET_WIDTH ,TILE_ASSET_HEIGHT ,
+                                             TILE_WIDTH,TILE_HEIGHT,0,160,CameraX,CameraY,TILE_ROCKCORN_LD);
+
+        tiles[TILE_ROCKCORN_RU] = new Sprite(csdl_setup->GetRenderer(), "assets/assets.png",
+                                             TILE_ASSET_WIDTH ,TILE_ASSET_HEIGHT ,
+                                             TILE_WIDTH,TILE_HEIGHT,80,80,CameraX,CameraY,TILE_ROCKCORN_RU);
+
+        tiles[TILE_ROCKCORN_RD] = new Sprite(csdl_setup->GetRenderer(), "assets/assets.png",
+                                             TILE_ASSET_WIDTH ,TILE_ASSET_HEIGHT ,
+                                             TILE_WIDTH,TILE_HEIGHT,80,160,CameraX,CameraY,TILE_ROCKCORN_RD);
+    }
+
     void Localmap::Update() {
 
 
@@ -49,11 +64,8 @@ namespace tok {
 
     void Localmap::Render() {
 
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 7; j++) {
-                backgroundImage[i][j]->Draw();
-            }
-        }
+
+        tiles[TILE_ROCKMAIN]->Draw();
 
         main_char->Draw();
         main_char->Update();

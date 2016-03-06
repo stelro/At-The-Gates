@@ -43,9 +43,13 @@ namespace tok {
         double yPossition;
         double xOrigin;
         double yOrigin;
+
+        int tileType;
     public:
         Sprite(SDL_Renderer *passed_renderer, const std::string filePath,int passedX,
                 int passedY, int passedWidth, int passedHeight, double *passedCameraX, double *passedCameraY);
+        Sprite(SDL_Renderer *passed_renderer, const std::string filePath, int passedX, int passedY,
+                int passedWidth, int passedHeight,int row, int col,double *passedCameraX, double *passedCameraY, int tileType);
         ~Sprite();
         void SetX(double passedX);
         void SetY(double passedY);
@@ -58,6 +62,7 @@ namespace tok {
         int GetHeight() const;
         void SetOrigin(double passedX, double passedY);
         void PlayAnimation(int beginFrame, int endFrame, int row, unsigned speed);
+        void cropTile(int row, int col, int tileWidth, int tileHeight);
         void SetupAnimation(int passedX, int passedY);
         void Draw();
         void DrawSteady();

@@ -13,24 +13,42 @@
  *
  */
 
+
+#ifndef TOK_LOCAMAP_H
+#define TOK_LOCAMAP_H
+
 #include <SDL2/SDL.h>
 #include <string>
 #include <memory>
+
 
 #include "SdlInitializer.h"
 #include "Sprite.h"
 #include "StateMachine.h"
 #include "MainCharacter.h"
 
+const int TILE_ASSET_WIDTH = 160;
+const int TILE_ASSET_HEIGHT = 240;
+const int TILE_WIDTH = 80;
+const int TILE_HEIGHT = 80;
 
-#ifndef TOK_LOCAMAP_H
-#define TOK_LOCAMAP_H
+const int TOTAL_TILES = 5;
+
+
+enum {
+    TILE_ROCKMAIN,
+    TILE_ROCKCORN_LU,
+    TILE_ROCKCORN_LD,
+    TILE_ROCKCORN_RU,
+    TILE_ROCKCORN_RD
+};
 
 namespace tok {
     class Localmap : public StateMachine {
     private:
+        void InitializeTiles();
         std::shared_ptr<SdlInitializer> csdl_setup;
-        std::shared_ptr<Sprite> backgroundImage[4][7];
+        std::shared_ptr<Sprite> backgroundImage;
         std::shared_ptr<MainCharacter> main_char;
 
         bool onPress;
@@ -38,6 +56,9 @@ namespace tok {
         double *CameraY;
         int *MouseX;
         int *MouseY;
+
+        Sprite *tiles[TOTAL_TILES];
+
 
     public:
         Localmap(std::shared_ptr<SdlInitializer> passed_csdl_setup,int screenWidth,int screenHeight, double *passedCameraX,

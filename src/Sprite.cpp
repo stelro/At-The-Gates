@@ -74,6 +74,16 @@ namespace tok {
         }
     }
 
+    void Sprite::cropTile(int row, int col, int tileWidth, int tileHeight) {
+
+            cropRect.x = row;
+            cropRect.y = col;
+            cropRect.w = tileWidth;
+            cropRect.h = tileHeight;
+
+    }
+
+
     void Sprite::SetX(double passedX) {
         xPossition = passedX;
         t_Rect.x = int(xPossition - xOrigin);
@@ -147,5 +157,43 @@ namespace tok {
 
     Sprite::~Sprite() {
         SDL_DestroyTexture(texture);
+    }
+
+    Sprite::Sprite(SDL_Renderer *passed_renderer, const std::string filePath, int passedX, int passedY, int passedWidth,
+                   int passedHeight,int row, int col, double *passedCameraX, double *passedCameraY, int tileType) :
+    renderer(passed_renderer), texture(nullptr), tileType(tileType)
+    {
+
+
+
+        texture = IMG_LoadTexture(renderer, filePath.c_str());
+
+        if (texture == nullptr) {
+            std::cerr << "Couldn't load image, path: " << filePath << std::endl;
+        }
+
+        t_Rect.x = passedX;
+        t_Rect.y = passedY;
+        t_Rect.w = passedWidth;
+        t_Rect.h = passedHeight;
+
+        SDL_QueryTexture(texture,nullptr,nullptr,&textureWidth,&textureHeight);
+
+        cropRect.x = row;
+        cropRect.y = col;
+        cropRect.w = passedWidth;
+        cropRect.h = passedHeight;
+
+
+        CameraX = passedCameraX;
+        CameraY = passedCameraY;
+
+        cameraRect.x = t_Rect.x + (int)*CameraX;
+        cameraRect.y = t_Rect.y + (int)*CameraY;
+        cameraRect.w = t_Rect.w;
+        cameraRect.h = t_Rect.h;
+
+
+
     }
 }
