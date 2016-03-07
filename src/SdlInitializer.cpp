@@ -36,6 +36,8 @@ namespace tok {
         }
 
         main_event = new SDL_Event();
+
+
     }
 
     SDL_Renderer *SdlInitializer::GetRenderer() const

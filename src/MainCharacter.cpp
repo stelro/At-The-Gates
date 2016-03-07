@@ -68,30 +68,30 @@ namespace tok {
             if (angle > 45 &&  angle <= 135) {
                 //down
                 if ( distance > 15)
-                    main_char->PlayAnimation(0,2,0,200);
+                    main_char->PlayAnimation(0,2,0,SPEED);
                 else
-                    main_char->PlayAnimation(1,1,0,200);
+                    main_char->PlayAnimation(1,1,0,SPEED);
             }
             else if (angle > 135 && angle <= 225) {
                 //left
                 if ( distance > 15)
-                    main_char->PlayAnimation(0,2,1,200);
+                    main_char->PlayAnimation(0,2,1,SPEED);
                 else
-                    main_char->PlayAnimation(1,1,1,200);
+                    main_char->PlayAnimation(1,1,1,SPEED);
             }
             else if (angle > 225 && angle <= 315) {
                 //up
                 if ( distance > 15)
-                    main_char->PlayAnimation(0,2,3,200);
+                    main_char->PlayAnimation(0,2,3,SPEED);
                 else
-                    main_char->PlayAnimation(1,1,3,200);
+                    main_char->PlayAnimation(1,1,3,SPEED);
             }
             else if ((angle <= 360 && angle > 315) || (angle >= 0 && angle <= 45)) {
                 //right
                 if ( distance > 15)
-                    main_char->PlayAnimation(0,2,2,200);
+                    main_char->PlayAnimation(0,2,2,SPEED);
                 else
-                    main_char->PlayAnimation(1,1,2,200);
+                    main_char->PlayAnimation(1,1,2,SPEED);
 
             }
         }
@@ -123,12 +123,14 @@ namespace tok {
 
             if (distance > 15 ) {
 
+                // 0.8f, determinates the speed of the character
+
                 if (*CameraX != xFollowPoint) {
-                    *CameraX = (*CameraX - ((*CameraX - xFollowPoint) / distance ) * 1.5f );
+                    *CameraX = (*CameraX - ((*CameraX - xFollowPoint) / distance ) * 0.8f );
                 }
 
                 if (*CameraY != yFollowPoint) {
-                    *CameraY = (*CameraY - ((*CameraY - yFollowPoint) / distance ) * 1.5f);
+                    *CameraY = (*CameraY - ((*CameraY - yFollowPoint) / distance ) * 0.8f);
                 }
 
                 timeCheck = SDL_GetTicks();

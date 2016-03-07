@@ -21,6 +21,8 @@
 #include "SdlInitializer.h"
 
 const double PI = 3.14159265359;
+//speed of animation when caracter is running
+const int SPEED = 150;
 
 namespace tok {
 
