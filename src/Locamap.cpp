@@ -76,7 +76,7 @@ namespace tok {
 
                 map >> tileType;
 
-                std::cout << tileType << " ";
+                //std::cout << tileType << " ";
 
                 tiles[i][j] = std::make_shared<Sprite>(csdl_setup->GetRenderer(), tileType, gTileClips, "assets/assets.png",
                                          TILE_WIDTH * j, TILE_HEIGHT * i, CameraX, CameraY);

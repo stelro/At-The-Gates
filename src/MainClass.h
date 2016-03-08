@@ -25,7 +25,15 @@
 #include "Timer.h"
 #include "Locamap.h"
 #include "MainCharacter.h"
+#include "GameMenu.h"
 
+
+enum {
+    STATE_NULL,
+    STATE_EXIT,
+    STATE_MAIMMENU,
+    STATE_LOCALMAP
+};
 
 const int FRAMES_PER_SECOND = 200;
 
@@ -33,10 +41,13 @@ namespace tok {
 
     class MainClass {
     private:
+        void UpdateState();
         std::shared_ptr<SdlInitializer> csdl_setup;
         std::shared_ptr<Localmap> localmap;
+        std::shared_ptr<GameMenu> gamemenu;
 
-        std::stack<StateMachine*> stateStack;
+        std::stack<std::shared_ptr<StateMachine>> stateStack;
+
         Timer fps;
 
         double CameraX;
@@ -44,19 +55,21 @@ namespace tok {
         int MouseX;
         int MouseY;
 
+        int state;
+        bool isPressed;
     public:
         MainClass(const std::string &title, int possitionX, int possitionY,
                     int passedWidth, int passedHeight);
         ~MainClass();
-        void ChangeState(StateMachine *stateMachine);
-        void PushState(StateMachine *state);
+        void ChangeState(std::shared_ptr<StateMachine> state);
+        void PushState(std::shared_ptr<StateMachine> state);
         void PopState();
         void PopStateAndDelete();
-        StateMachine *TopState();
+        std::shared_ptr<StateMachine> TopState();
         void GameLoop();
     };
 
-    inline void MainClass::PushState(StateMachine *state) {
+    inline void MainClass::PushState(std::shared_ptr<StateMachine> state) {
         this->stateStack.push(state);
     }
 
@@ -66,18 +79,17 @@ namespace tok {
 
     inline void MainClass::PopStateAndDelete() {
         if (!stateStack.empty()) {
-            delete this->stateStack.top();
             this->stateStack.pop();
         }
     }
 
-    inline void MainClass::ChangeState(StateMachine *state) {
+    inline void MainClass::ChangeState(std::shared_ptr<StateMachine> state) {
         if (!this->stateStack.empty())
             this->stateStack.pop();
         PushState(state);
     }
 
-    inline StateMachine * MainClass::TopState() {
+    inline std::shared_ptr<StateMachine> MainClass::TopState() {
         if (this->stateStack.empty())
             return nullptr;
         else

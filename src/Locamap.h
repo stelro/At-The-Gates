@@ -45,12 +45,13 @@ const int TOTAL_TILES = 5;
 
 
 enum {
-    TILE_ROCKMAIN = 0,
-    TILE_ROCKCORN_LU = 1,
-    TILE_ROCKCORN_LD = 2,
-    TILE_ROCKCORN_RU = 3,
-    TILE_ROCKCORN_RD = 4
+    TILE_ROCKMAIN,
+    TILE_ROCKCORN_LU,
+    TILE_ROCKCORN_LD,
+    TILE_ROCKCORN_RU,
+    TILE_ROCKCORN_RD
 };
+
 
 namespace tok {
     class Localmap : public StateMachine {
@@ -61,6 +62,7 @@ namespace tok {
         std::shared_ptr<MainCharacter> main_char;
 
         bool onPress;
+
         double *CameraX;
         double *CameraY;
         int *MouseX;
