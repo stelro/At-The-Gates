@@ -193,7 +193,6 @@ namespace tok {
         cameraRect.w = t_Rect.w;
         cameraRect.h = t_Rect.h;
 
-
-
     }
+
 }
