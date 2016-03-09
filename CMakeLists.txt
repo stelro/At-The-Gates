@@ -21,3 +21,8 @@ add_custom_command(TARGET tok POST_BUILD
         ${CMAKE_SOURCE_DIR}/assets
         $<TARGET_FILE_DIR:tok>/assets)
 
+add_custom_command(TARGET tok POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/maps
+        $<TARGET_FILE_DIR:tok>/maps)
+

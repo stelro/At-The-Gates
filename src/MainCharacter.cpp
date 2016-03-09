@@ -19,7 +19,7 @@ namespace tok {
     follow(false), stopAnimation(false)
     {
 
-        main_char = std::make_shared<Sprite>(csdl_setup->GetRenderer(), "assets/death_scythe_ani.png", 300,250,50,80,
+        main_char = std::make_shared<Sprite>(csdl_setup->GetRenderer(), "assets/killer.png", 300,250,50,80,
                                 CameraX, CameraY);
 
         //----------------------------------

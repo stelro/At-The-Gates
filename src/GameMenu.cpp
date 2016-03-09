@@ -24,7 +24,7 @@ namespace tok {
     void GameMenu::SetButtons() {
 
         Buttons[ DEFAULT_BUTTON ].x = 0;
-        Buttons[ DEFAULT_BUTTON ].y = 140;
+        Buttons[ DEFAULT_BUTTON ].y = 112;
         Buttons[ DEFAULT_BUTTON ].w = BUTTON_WIDTH;
         Buttons[ DEFAULT_BUTTON ].h = BUTTON_HEIGHT;
 
@@ -34,7 +34,7 @@ namespace tok {
         Buttons[ MOUSEOVER_BUTTON ].h = BUTTON_HEIGHT;
 
         Buttons[ PRESSED_BUTTON ].x = 0;
-        Buttons[ PRESSED_BUTTON ].y = 70;
+        Buttons[ PRESSED_BUTTON ].y = 56;
         Buttons[ PRESSED_BUTTON ].w = BUTTON_WIDTH;
         Buttons[ PRESSED_BUTTON ].h = BUTTON_HEIGHT;
 
@@ -44,7 +44,7 @@ namespace tok {
         // to place the buttons right to the center of the screen ( if we assume that the dimensions is 1024 x 768 )
         //we divide 1024/2 and divide the button image width with 2, and substruct the result with 512 ( the half
         //of the width screen , so  (1024/2 = 512, 290/2 = 145 , 512 - 145 = 367 )
-        newGameButton = std::make_shared<Sprite>(csdl_setup->GetRenderer(), 0, Buttons, "assets/newgame.png",
+        newGameButton = std::make_shared<Sprite>(csdl_setup->GetRenderer(), 0, Buttons, "assets/newgame1.png",
                                                  367,300,CameraX,CameraY);
 
         loadGameButton = std::make_shared<Sprite>(csdl_setup->GetRenderer(), 0, Buttons, "assets/loadgame.png",
@@ -56,8 +56,8 @@ namespace tok {
 
     void GameMenu::Render() {
         newGameButton->DrawSteady();
-        loadGameButton->DrawSteady();
-        exitGameButton->DrawSteady();
+//        loadGameButton->DrawSteady();
+//        exitGameButton->DrawSteady();
     }
 
     void GameMenu::Update() {

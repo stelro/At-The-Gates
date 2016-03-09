@@ -17,7 +17,7 @@ enum {
 };
 
 const int BUTTON_WIDTH = 290;
-const int BUTTON_HEIGHT = 70;
+const int BUTTON_HEIGHT = 56;
 
 namespace tok {
 
