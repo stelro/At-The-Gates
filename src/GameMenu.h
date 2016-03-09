@@ -16,6 +16,12 @@ enum {
     PRESSED_BUTTON
 };
 
+enum {
+    NEWGAME,
+    LOADGAME,
+    EXITGAME
+};
+
 const int BUTTON_WIDTH = 290;
 const int BUTTON_HEIGHT = 56;
 
@@ -26,9 +32,8 @@ namespace tok {
         void SetButtons();
         void InitializeButtons();
         std::shared_ptr<SdlInitializer> csdl_setup;
-        std::shared_ptr<Sprite> newGameButton;
-        std::shared_ptr<Sprite> loadGameButton;
-        std::shared_ptr<Sprite> exitGameButton;
+        std::shared_ptr<Sprite> backgroundImage;
+
         double *CameraX;
         double *CameraY;
 
@@ -36,6 +41,7 @@ namespace tok {
         int *MouseY;
 
         SDL_Rect Buttons[3];
+        std::shared_ptr<Sprite> menuButtons[3];
 
     public:
         GameMenu(std::shared_ptr<SdlInitializer> passed_csdl_setup, double *passedCameraX, double *passedCameraY,int *passedMouseX, int *passedMouseY);

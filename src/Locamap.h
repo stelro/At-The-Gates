@@ -10,8 +10,7 @@
  * character's enviroment!
  * Inherits from Statemachine abstract class, thus Render() and Update()
  * must be implemented!
- *
- */
+ * */
 
 
 #ifndef TOK_LOCAMAP_H

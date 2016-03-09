@@ -67,7 +67,7 @@ namespace tok {
 
     void Localmap::SetTiles() {
 
-        std::ifstream map("assets/localmap.map");
+        std::ifstream map("maps/localmap.map");
 
 
         int tileType;
