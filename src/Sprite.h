@@ -45,6 +45,7 @@ namespace tok {
         double yOrigin;
 
         int _tileType;
+        SDL_Rect *_tileClips;
     public:
         Sprite(SDL_Renderer *passed_renderer, const std::string filePath,int passedX,
                 int passedY, int passedWidth, int passedHeight, double *passedCameraX, double *passedCameraY);
@@ -67,6 +68,9 @@ namespace tok {
         void Draw();
         void DrawSteady();
         SDL_Rect GetPositionRect();
+        void SetSpriteType(int type);
+        int GetRectX() const ;
+        int GetRectY() const ;
 
     };
 

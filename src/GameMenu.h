@@ -16,6 +16,9 @@ enum {
     PRESSED_BUTTON
 };
 
+const int BUTTON_WIDTH = 290;
+const int BUTTON_HEIGHT = 70;
+
 namespace tok {
 
     class GameMenu : public StateMachine {
@@ -29,10 +32,13 @@ namespace tok {
         double *CameraX;
         double *CameraY;
 
+        int *MouseX;
+        int *MouseY;
+
         SDL_Rect Buttons[3];
 
     public:
-        GameMenu(std::shared_ptr<SdlInitializer> passed_csdl_setup, double *passedCameraX, double *passedCameraY);
+        GameMenu(std::shared_ptr<SdlInitializer> passed_csdl_setup, double *passedCameraX, double *passedCameraY,int *passedMouseX, int *passedMouseY);
         ~GameMenu();
         void Render();
         void Update();

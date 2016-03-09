@@ -109,6 +109,14 @@ namespace tok {
         return yPossition;
     }
 
+    int Sprite::GetRectX() const {
+        return t_Rect.x;
+    }
+
+    int Sprite::GetRectY() const {
+        return t_Rect.y;
+    }
+
     void Sprite::SetWidth(int passedWidth) {
         t_Rect.w = passedWidth;
     }
@@ -161,11 +169,11 @@ namespace tok {
 
     Sprite::Sprite(SDL_Renderer *passed_renderer,int tileType, SDL_Rect *tileClips, const std::string filePath, int passedX, int passedY,
                    double *passedCameraX, double *passedCameraY) :
-    renderer(passed_renderer), texture(nullptr), _tileType(tileType)
+         renderer(passed_renderer), _tileType(tileType), _tileClips(tileClips)
     {
 
 
-
+        texture = nullptr;
         texture = IMG_LoadTexture(renderer, filePath.c_str());
 
         if (texture == nullptr) {
@@ -174,15 +182,15 @@ namespace tok {
 
         t_Rect.x = passedX;
         t_Rect.y = passedY;
-        t_Rect.w = tileClips[_tileType].w;
-        t_Rect.h = tileClips[_tileType].h;
+        t_Rect.w = _tileClips[_tileType].w;
+        t_Rect.h = _tileClips[_tileType].h;
 
         SDL_QueryTexture(texture,nullptr,nullptr,&textureWidth,&textureHeight);
 
-        cropRect.x = tileClips[_tileType].x;
-        cropRect.y = tileClips[_tileType].y;
-        cropRect.w = tileClips[_tileType].w;
-        cropRect.h = tileClips[_tileType].h;
+        cropRect.x = _tileClips[_tileType].x;
+        cropRect.y = _tileClips[_tileType].y;
+        cropRect.w = _tileClips[_tileType].w;
+        cropRect.h = _tileClips[_tileType].h;
 
 
         CameraX = passedCameraX;
@@ -193,6 +201,17 @@ namespace tok {
         cameraRect.w = t_Rect.w;
         cameraRect.h = t_Rect.h;
 
+    }
+
+    void Sprite::SetSpriteType(int type) {
+
+        t_Rect.w = _tileClips[type].w;
+        t_Rect.h = _tileClips[type].h;
+
+        cropRect.x = _tileClips[type].x;
+        cropRect.y = _tileClips[type].y;
+        cropRect.w = _tileClips[type].w;
+        cropRect.h = _tileClips[type].h;
     }
 
 }

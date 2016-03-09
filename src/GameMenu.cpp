@@ -6,8 +6,8 @@
 
 namespace tok {
 
-    GameMenu::GameMenu(std::shared_ptr<SdlInitializer> passed_csdl_setup,double *passedCameraX, double *passedCameraY) :
-    csdl_setup(passed_csdl_setup), CameraX(passedCameraX), CameraY(passedCameraY)
+    GameMenu::GameMenu(std::shared_ptr<SdlInitializer> passed_csdl_setup,double *passedCameraX, double *passedCameraY,int *passedMouseX, int *passedMouseY) :
+    csdl_setup(passed_csdl_setup), CameraX(passedCameraX), CameraY(passedCameraY), MouseX(passedMouseX), MouseY(passedMouseY)
     {
 
         SetButtons();
@@ -25,18 +25,18 @@ namespace tok {
 
         Buttons[ DEFAULT_BUTTON ].x = 0;
         Buttons[ DEFAULT_BUTTON ].y = 140;
-        Buttons[ DEFAULT_BUTTON ].w = 290;
-        Buttons[ DEFAULT_BUTTON ].h = 70;
+        Buttons[ DEFAULT_BUTTON ].w = BUTTON_WIDTH;
+        Buttons[ DEFAULT_BUTTON ].h = BUTTON_HEIGHT;
 
         Buttons[ MOUSEOVER_BUTTON ].x = 0;
         Buttons[ MOUSEOVER_BUTTON ].y = 0;
-        Buttons[ MOUSEOVER_BUTTON ].w = 290;
-        Buttons[ MOUSEOVER_BUTTON ].h = 70;
+        Buttons[ MOUSEOVER_BUTTON ].w = BUTTON_WIDTH;
+        Buttons[ MOUSEOVER_BUTTON ].h = BUTTON_HEIGHT;
 
         Buttons[ PRESSED_BUTTON ].x = 0;
         Buttons[ PRESSED_BUTTON ].y = 70;
-        Buttons[ PRESSED_BUTTON ].w = 290;
-        Buttons[ PRESSED_BUTTON ].h = 70;
+        Buttons[ PRESSED_BUTTON ].w = BUTTON_WIDTH;
+        Buttons[ PRESSED_BUTTON ].h = BUTTON_HEIGHT;
 
     }
 
@@ -62,6 +62,57 @@ namespace tok {
 
     void GameMenu::Update() {
 
+        if (csdl_setup->GetMainEvent()->type == SDL_MOUSEMOTION ||
+            csdl_setup->GetMainEvent()->type == SDL_MOUSEBUTTONDOWN ||
+            csdl_setup->GetMainEvent()->type == SDL_MOUSEBUTTONUP) {
+
+            int x, y;
+            SDL_GetMouseState(&x,&y);
+
+            //Check if mouse is in button
+            bool inside = true;
+
+            //Mouse is left of the button
+            if (x < newGameButton->GetRectX()) {
+                inside = false;
+            }
+
+            //Mouse is right of the button
+            else if (x > newGameButton->GetRectY() + BUTTON_WIDTH) {
+                inside = false;
+            }
+
+            //Mouse above the button
+            else if ( y < newGameButton->GetRectY()) {
+                inside = false;
+            }
+
+            //Mouse below the button
+            else if (y > newGameButton->GetRectY() + BUTTON_HEIGHT) {
+                inside = false;
+            }
+
+            if (!inside) {
+                newGameButton->SetSpriteType(DEFAULT_BUTTON);
+            }
+
+            //Mouse is inside the button
+            else {
+
+
+                switch (csdl_setup->GetMainEvent()->type) {
+
+                    case SDL_MOUSEMOTION:
+                        newGameButton->SetSpriteType(MOUSEOVER_BUTTON);
+                        break;
+                    case SDL_MOUSEBUTTONDOWN:
+                        newGameButton->SetSpriteType(PRESSED_BUTTON);
+                        break;
+
+                }
+            }
+
+        }
 
     }
 

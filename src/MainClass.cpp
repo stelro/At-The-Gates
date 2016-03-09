@@ -29,7 +29,7 @@ namespace  tok {
         }
 
         localmap = std::make_shared<Localmap>(csdl_setup,passedWidth,passedHeight,&CameraX,&CameraY,&MouseX,&MouseY);
-        gamemenu = std::make_shared<GameMenu>(csdl_setup, &CameraX, &CameraY);
+        gamemenu = std::make_shared<GameMenu>(csdl_setup, &CameraX, &CameraY,&MouseX,&MouseY);
 
         stateStack.push(localmap);
     }
