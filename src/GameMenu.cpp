@@ -47,13 +47,13 @@ namespace tok {
         // to place the buttons right to the center of the screen ( if we assume that the dimensions is 1024 x 768 )
         //we divide 1024/2 and divide the button image width with 2, and substruct the result with 512 ( the half
         //of the width screen , so  (1024/2 = 512, 290/2 = 145 , 512 - 145 = 367 )
-        menuButtons[ NEWGAME ] = std::make_shared<Sprite>(csdl_setup->GetRenderer(), 0, Buttons, "assets/newgame.png",
+        menuButtons[ NEWGAME ] = std::make_shared<Sprite>(csdl_setup->GetRenderer(), NEWGAME, Buttons, "assets/newgame.png",
                                                  367,456,CameraX,CameraY);
 
-        menuButtons[ LOADGAME ]  = std::make_shared<Sprite>(csdl_setup->GetRenderer(), 0, Buttons, "assets/loadgame.png",
+        menuButtons[ LOADGAME ]  = std::make_shared<Sprite>(csdl_setup->GetRenderer(), LOADGAME, Buttons, "assets/loadgame.png",
                                                  367,522,CameraX,CameraY);
 
-        menuButtons[ EXITGAME ]  = std::make_shared<Sprite>(csdl_setup->GetRenderer(), 0, Buttons, "assets/exitgame.png",
+        menuButtons[ EXITGAME ]  = std::make_shared<Sprite>(csdl_setup->GetRenderer(), EXITGAME, Buttons, "assets/exitgame.png",
                                                  367,588,CameraX,CameraY);
     }
 

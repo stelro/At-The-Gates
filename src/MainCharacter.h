@@ -22,7 +22,7 @@
 
 const double PI = 3.14159265359;
 //speed of animation when caracter is running
-const int SPEED = 150;
+const int SPEED = 120;
 
 namespace tok {
 
