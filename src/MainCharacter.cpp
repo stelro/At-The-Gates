@@ -11,7 +11,7 @@
  */
 
 #include "MainCharacter.h"
-
+#include <vector>
 namespace tok {
     MainCharacter::MainCharacter(std::shared_ptr<SdlInitializer> passed_csdl_setup, int *passedMouseX, int *passedMouseY,
                                  double *passedCameraX, double *passedCameraY) :
@@ -46,7 +46,7 @@ namespace tok {
     void MainCharacter::UpdateAnimation() {
 
         //-----------------------------------------------------
-        //this code above is about the caracter animation
+        //this code above is about the character animation
         //the turning the character to the right direction
         //when the mouse direction changes
         //*
