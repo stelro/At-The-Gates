@@ -11,6 +11,89 @@
 
 namespace tok {
 
+    Sprite::Sprite() :
+        renderer(nullptr), texture(nullptr)
+    {
+
+
+        //texture rectangle
+        t_Rect.x = 0;
+        t_Rect.y = 0;
+        t_Rect.w = 0;
+        t_Rect.h = 0;
+
+        SDL_QueryTexture(texture,nullptr,nullptr,&textureWidth,&textureHeight);
+
+        cropRect.x = 0;
+        cropRect.y = 0;
+        cropRect.w = 0;
+        cropRect.h = 0;
+
+        xPossition = 0;
+        yPossition = 0;
+
+        xOrigin = 0;
+        yOrigin = 0;
+
+        currentFrame = 0;
+
+        frameAmountX = 0;
+        frameAmountY = 0;
+
+        CameraX = 0;
+        CameraY = 0;
+
+        cameraRect.x = t_Rect.x + (int)*CameraX;
+        cameraRect.y = t_Rect.y + (int)*CameraY;
+        cameraRect.w = t_Rect.w;
+        cameraRect.h = t_Rect.h;
+    }
+
+    Sprite::Sprite(const Sprite &rhs)
+    {
+
+        if ( this != &rhs ) {
+
+            renderer = rhs.renderer;
+            texture = rhs.texture;
+
+
+            //texture rectangle
+            t_Rect.x = rhs.t_Rect.x;
+            t_Rect.y = rhs.t_Rect.y;
+            t_Rect.w = rhs.t_Rect.w;
+            t_Rect.h = rhs.t_Rect.h;
+
+            SDL_QueryTexture(texture,nullptr,nullptr,&textureWidth,&textureHeight);
+
+            cropRect.x = rhs.cropRect.x;
+            cropRect.y = rhs.cropRect.y;
+            cropRect.w = rhs.cropRect.w;
+            cropRect.h = rhs.cropRect.h;
+
+            xPossition = rhs.xPossition;
+            yPossition = rhs.yPossition;
+
+            xOrigin = rhs.xOrigin;
+            yOrigin = rhs.yOrigin;
+
+            currentFrame = rhs.currentFrame;
+
+            frameAmountX = rhs.frameAmountX;
+            frameAmountY = rhs.frameAmountY;
+
+            CameraX = rhs.CameraX;
+            CameraY = rhs.CameraY;
+
+            cameraRect.x = rhs.cameraRect.x;
+            cameraRect.y = rhs.cameraRect.y;
+            cameraRect.w = rhs.cameraRect.w;
+            cameraRect.h = rhs.cameraRect.h;
+
+        }
+
+    }
+
     Sprite::Sprite(SDL_Renderer *passed_renderer, const std::string filePath, int passedX, int passedY,
                    int passedWidth, int passedHeight, double *passedCameraX, double *passedCameraY) :
     renderer(passed_renderer), texture(nullptr)

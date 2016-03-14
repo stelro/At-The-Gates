@@ -47,10 +47,13 @@ namespace tok {
         int _tileType;
         SDL_Rect *_tileClips;
     public:
+        Sprite();
         Sprite(SDL_Renderer *passed_renderer, const std::string filePath,int passedX,
                 int passedY, int passedWidth, int passedHeight, double *passedCameraX, double *passedCameraY);
         Sprite(SDL_Renderer *passed_renderer,int tileType, SDL_Rect *tileClips, const std::string filePath, int passedX, int passedY,
                 double *passedCameraX, double *passedCameraY);
+        Sprite(const Sprite &rhs);
+        Sprite &operator =(const Sprite &rhs);
         ~Sprite();
         void SetX(double passedX);
         void SetY(double passedY);
