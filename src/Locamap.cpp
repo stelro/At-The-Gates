@@ -27,7 +27,7 @@ namespace tok {
         onPress = false;
 
         main_char = std::make_shared<MainCharacter>(csdl_setup, MouseX, MouseY, CameraX, CameraY);
-
+        building = std::make_shared<Buildings>(csdl_setup,512,0,CameraX,CameraY);
         SetTiles();
 
     }
@@ -209,11 +209,13 @@ namespace tok {
     void Localmap::Render() {
 
 
-      for ( int i = 0; i < TILES_ROW; i++) {
-          for (int j = 0; j < TILES_COL; j++) {
+        for ( int i = 0; i < TILES_ROW; i++) {
+              for (int j = 0; j < TILES_COL; j++) {
               tiles[i][j]->Draw();
-          }
-      }
+            }
+         }
+
+        building->Draw();
 
         main_char->Draw();
         main_char->Update();

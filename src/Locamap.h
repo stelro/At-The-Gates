@@ -26,15 +26,16 @@
 #include "Sprite.h"
 #include "StateMachine.h"
 #include "MainCharacter.h"
+#include "Buildings.h"
 
 //const int TILE_ASSET_WIDTH = 160;
 //const int TILE_ASSET_HEIGHT = 240;
 
 
 //------------------------------------
-//MAP SIZE, 12 x 16 , 192 TILES
-const int TILES_ROW = 12;
-const int TILES_COL = 16;
+//MAP SIZE, 24 x 34 , 816 TILES
+const int TILES_ROW = 24;
+const int TILES_COL = 34;
 //------------------------------------
 
 const int TILE_WIDTH = 40;
@@ -66,6 +67,7 @@ namespace tok {
         std::shared_ptr<Sprite> tiles[TILES_ROW][TILES_COL];
         SDL_Rect gTileClips[TOTAL_TILES];
 
+        std::shared_ptr<Buildings> building;
 
     public:
         Localmap(std::shared_ptr<SdlInitializer> passed_csdl_setup,int screenWidth,int screenHeight, double *passedCameraX,
