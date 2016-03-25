@@ -21,6 +21,7 @@ namespace  tok {
 
         isPressed = false;
 
+
         try {
             csdl_setup = std::make_shared<SdlInitializer>(SDL_INIT_EVERYTHING, title,
                                             possitionX, possitionY, passedWidth, passedHeight);
@@ -29,7 +30,7 @@ namespace  tok {
         }
 
         localmap = std::make_shared<Localmap>(csdl_setup,passedWidth,passedHeight,&CameraX,&CameraY,&MouseX,&MouseY);
-        gamemenu = std::make_shared<GameMenu>(csdl_setup, &CameraX, &CameraY,&MouseX,&MouseY);
+        gamemenu = std::make_shared<GameMenu>(csdl_setup,&quit_state,&CameraX, &CameraY,&MouseX,&MouseY);
 
         stateStack.push(localmap);
     }
@@ -68,7 +69,7 @@ namespace  tok {
 
     void MainClass::GameLoop() {
 
-        while (csdl_setup->GetMainEvent()-> type != SDL_QUIT) {
+        while ((csdl_setup->GetMainEvent()-> type != SDL_QUIT) && (!quit_state)) {
 
             csdl_setup->SdlBegin();
             SDL_GetMouseState(&MouseX,&MouseY);

@@ -72,8 +72,9 @@ namespace tok {
         void DrawSteady();
         SDL_Rect GetPositionRect();
         void SetSpriteType(int type);
-        int GetRectX() const ;
-        int GetRectY() const ;
+        int GetRectX() const;
+        int GetRectY() const;
+        int GetTileType() const;
 
     };
 

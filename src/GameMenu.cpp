@@ -6,7 +6,7 @@
 
 namespace tok {
 
-    GameMenu::GameMenu(std::shared_ptr<SdlInitializer> passed_csdl_setup,double *passedCameraX, double *passedCameraY,int *passedMouseX, int *passedMouseY) :
+    GameMenu::GameMenu(std::shared_ptr<SdlInitializer> passed_csdl_setup,bool *quit_state,double *passedCameraX, double *passedCameraY,int *passedMouseX, int *passedMouseY) :
     csdl_setup(passed_csdl_setup), CameraX(passedCameraX), CameraY(passedCameraY), MouseX(passedMouseX), MouseY(passedMouseY)
     {
 
@@ -15,8 +15,7 @@ namespace tok {
 
         backgroundImage = std::make_shared<Sprite>(csdl_setup->GetRenderer(),"assets/wallpaper.png",0,0,1024,768, CameraX, CameraY);
 
-
-
+        state = quit_state;
     }
 
     GameMenu::~GameMenu() {
@@ -113,6 +112,8 @@ namespace tok {
                             break;
                         case SDL_MOUSEBUTTONDOWN:
                             button->SetSpriteType(PRESSED_BUTTON);
+                            if ( button->GetTileType() == EXITGAME)
+                                *state = true;
                             break;
 
                     }

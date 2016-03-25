@@ -42,9 +42,10 @@ namespace tok {
 
         SDL_Rect Buttons[3];
         std::shared_ptr<Sprite> menuButtons[3];
+        bool *state;
 
     public:
-        GameMenu(std::shared_ptr<SdlInitializer> passed_csdl_setup, double *passedCameraX, double *passedCameraY,int *passedMouseX, int *passedMouseY);
+        GameMenu(std::shared_ptr<SdlInitializer> passed_csdl_setup,bool *quit_state,double *passedCameraX, double *passedCameraY,int *passedMouseX, int *passedMouseY);
         ~GameMenu();
         void Render();
         void Update();

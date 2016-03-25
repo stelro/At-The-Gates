@@ -297,4 +297,8 @@ namespace tok {
         cropRect.h = _tileClips[type].h;
     }
 
+    int Sprite::GetTileType() const {
+        return _tileType;
+    }
+
 }

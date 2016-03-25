@@ -57,6 +57,7 @@ namespace tok {
 
         int state;
         bool isPressed;
+        bool quit_state;
     public:
         MainClass(const std::string &title, int possitionX, int possitionY,
                     int passedWidth, int passedHeight);
