@@ -12,7 +12,7 @@ namespace tok {
     {
 
         building1 = std::make_shared<Sprite>(csdl_setup->GetRenderer(), "assets/buildings/building1.png",x,y,340,314,
-                                             CameraX,CameraY);
+                                             CameraX,CameraY,CollisionRect(0,120,43,36));
 
 
     }

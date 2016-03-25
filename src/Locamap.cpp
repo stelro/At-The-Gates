@@ -190,7 +190,7 @@ namespace tok {
                 //std::cout << tileType << " ";
 
                 tiles[i][j] = std::make_shared<Sprite>(csdl_setup->GetRenderer(), tileType, gTileClips, "assets/tiles1.png",
-                                         TILE_WIDTH * j, TILE_HEIGHT * i, CameraX, CameraY);
+                                         TILE_WIDTH * j, TILE_HEIGHT * i, CameraX, CameraY,CollisionRect());
 
             }
 

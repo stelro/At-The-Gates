@@ -95,10 +95,12 @@ namespace tok {
     }
 
     Sprite::Sprite(SDL_Renderer *passed_renderer, const std::string filePath, int passedX, int passedY,
-                   int passedWidth, int passedHeight, double *passedCameraX, double *passedCameraY) :
+                   int passedWidth, int passedHeight, double *passedCameraX, double *passedCameraY,CollisionRect passed_CollisonRect) :
     renderer(passed_renderer), texture(nullptr)
 
     {
+
+        Collison_Rect = passed_CollisonRect;
         texture = IMG_LoadTexture(renderer, filePath.c_str());
 
         if (texture == nullptr) {
@@ -128,6 +130,42 @@ namespace tok {
 
         frameAmountX = 0;
         frameAmountY = 0;
+
+        CameraX = passedCameraX;
+        CameraY = passedCameraY;
+
+        cameraRect.x = t_Rect.x + (int)*CameraX;
+        cameraRect.y = t_Rect.y + (int)*CameraY;
+        cameraRect.w = t_Rect.w;
+        cameraRect.h = t_Rect.h;
+
+    }
+
+    Sprite::Sprite(SDL_Renderer *passed_renderer,int tileType, SDL_Rect *tileClips, const std::string filePath, int passedX, int passedY,
+                   double *passedCameraX, double *passedCameraY,CollisionRect passed_CollisonRect) :
+        renderer(passed_renderer), _tileType(tileType), _tileClips(tileClips)
+    {
+
+        Collison_Rect = passed_CollisonRect;
+        texture = nullptr;
+        texture = IMG_LoadTexture(renderer, filePath.c_str());
+
+        if (texture == nullptr) {
+            std::cerr << "Couldn't load image, path: " << filePath << std::endl;
+        }
+
+        t_Rect.x = passedX;
+        t_Rect.y = passedY;
+        t_Rect.w = _tileClips[_tileType].w;
+        t_Rect.h = _tileClips[_tileType].h;
+
+        SDL_QueryTexture(texture,nullptr,nullptr,&textureWidth,&textureHeight);
+
+        cropRect.x = _tileClips[_tileType].x;
+        cropRect.y = _tileClips[_tileType].y;
+        cropRect.w = _tileClips[_tileType].w;
+        cropRect.h = _tileClips[_tileType].h;
+
 
         CameraX = passedCameraX;
         CameraY = passedCameraY;
@@ -250,41 +288,6 @@ namespace tok {
         SDL_DestroyTexture(texture);
     }
 
-    Sprite::Sprite(SDL_Renderer *passed_renderer,int tileType, SDL_Rect *tileClips, const std::string filePath, int passedX, int passedY,
-                   double *passedCameraX, double *passedCameraY) :
-         renderer(passed_renderer), _tileType(tileType), _tileClips(tileClips)
-    {
-
-
-        texture = nullptr;
-        texture = IMG_LoadTexture(renderer, filePath.c_str());
-
-        if (texture == nullptr) {
-            std::cerr << "Couldn't load image, path: " << filePath << std::endl;
-        }
-
-        t_Rect.x = passedX;
-        t_Rect.y = passedY;
-        t_Rect.w = _tileClips[_tileType].w;
-        t_Rect.h = _tileClips[_tileType].h;
-
-        SDL_QueryTexture(texture,nullptr,nullptr,&textureWidth,&textureHeight);
-
-        cropRect.x = _tileClips[_tileType].x;
-        cropRect.y = _tileClips[_tileType].y;
-        cropRect.w = _tileClips[_tileType].w;
-        cropRect.h = _tileClips[_tileType].h;
-
-
-        CameraX = passedCameraX;
-        CameraY = passedCameraY;
-
-        cameraRect.x = t_Rect.x + (int)*CameraX;
-        cameraRect.y = t_Rect.y + (int)*CameraY;
-        cameraRect.w = t_Rect.w;
-        cameraRect.h = t_Rect.h;
-
-    }
 
     void Sprite::SetSpriteType(int type) {
 
@@ -299,6 +302,25 @@ namespace tok {
 
     int Sprite::GetTileType() const {
         return _tileType;
+    }
+
+    SDL_Rect Sprite::GetPositionRect() const {
+        return t_Rect;
+    }
+
+    CollisionRect Sprite::GetCollisonRect() const {
+        return Collison_Rect;
+    }
+
+    bool Sprite::isColliding(CollisionRect collider) {
+
+        return !(Collison_Rect.GetRectangle().x +
+        Collison_Rect.GetRectangle().w < collider.GetRectangle().x ||
+        Collison_Rect.GetRectangle().y + Collison_Rect.GetRectangle().h <
+        collider.GetRectangle().y || Collison_Rect.GetRectangle().x >
+        collider.GetRectangle().x + collider.GetRectangle().w ||
+        Collison_Rect.GetRectangle().y > collider.GetRectangle().y +
+        collider.GetRectangle().h);
     }
 
 }

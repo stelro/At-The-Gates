@@ -15,6 +15,8 @@
 #include <SDL2/SDL_image.h>
 #include <iostream>
 
+#include "CollisionRect.h"
+
 namespace tok {
 
     class Sprite {
@@ -46,12 +48,14 @@ namespace tok {
 
         int _tileType;
         SDL_Rect *_tileClips;
+
+        CollisionRect Collison_Rect;
     public:
         Sprite();
         Sprite(SDL_Renderer *passed_renderer, const std::string filePath,int passedX,
-                int passedY, int passedWidth, int passedHeight, double *passedCameraX, double *passedCameraY);
+                int passedY, int passedWidth, int passedHeight, double *passedCameraX, double *passedCameraY,CollisionRect passed_CollisonRect);
         Sprite(SDL_Renderer *passed_renderer,int tileType, SDL_Rect *tileClips, const std::string filePath, int passedX, int passedY,
-                double *passedCameraX, double *passedCameraY);
+                double *passedCameraX, double *passedCameraY,CollisionRect passed_CollisonRect);
         Sprite(const Sprite &rhs);
         Sprite &operator =(const Sprite &rhs);
         ~Sprite();
@@ -70,11 +74,13 @@ namespace tok {
         void SetupAnimation(int passedX, int passedY);
         void Draw();
         void DrawSteady();
-        SDL_Rect GetPositionRect();
         void SetSpriteType(int type);
         int GetRectX() const;
         int GetRectY() const;
         int GetTileType() const;
+        CollisionRect GetCollisonRect() const;
+        bool isColliding(CollisionRect collider);
+        SDL_Rect GetPositionRect() const;
 
     };
 

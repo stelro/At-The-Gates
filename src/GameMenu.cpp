@@ -13,7 +13,7 @@ namespace tok {
         SetButtons();
         InitializeButtons();
 
-        backgroundImage = std::make_shared<Sprite>(csdl_setup->GetRenderer(),"assets/wallpaper.png",0,0,1024,768, CameraX, CameraY);
+        backgroundImage = std::make_shared<Sprite>(csdl_setup->GetRenderer(),"assets/wallpaper.png",0,0,1024,768, CameraX, CameraY,CollisionRect());
 
         state = quit_state;
     }
@@ -47,13 +47,13 @@ namespace tok {
         //we divide 1024/2 and divide the button image width with 2, and substruct the result with 512 ( the half
         //of the width screen , so  (1024/2 = 512, 290/2 = 145 , 512 - 145 = 367 )
         menuButtons[ NEWGAME ] = std::make_shared<Sprite>(csdl_setup->GetRenderer(), NEWGAME, Buttons, "assets/newgame.png",
-                                                 367,456,CameraX,CameraY);
+                                                 367,456,CameraX,CameraY,CollisionRect());
 
         menuButtons[ LOADGAME ]  = std::make_shared<Sprite>(csdl_setup->GetRenderer(), LOADGAME, Buttons, "assets/loadgame.png",
-                                                 367,522,CameraX,CameraY);
+                                                 367,522,CameraX,CameraY,CollisionRect());
 
         menuButtons[ EXITGAME ]  = std::make_shared<Sprite>(csdl_setup->GetRenderer(), EXITGAME, Buttons, "assets/exitgame.png",
-                                                 367,588,CameraX,CameraY);
+                                                 367,588,CameraX,CameraY,CollisionRect());
     }
 
     void GameMenu::Render() {
