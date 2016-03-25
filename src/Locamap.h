@@ -37,18 +37,14 @@ const int TILES_ROW = 12;
 const int TILES_COL = 16;
 //------------------------------------
 
-const int TILE_WIDTH = 80;
-const int TILE_HEIGHT = 79;
+const int TILE_WIDTH = 40;
+const int TILE_HEIGHT = 40;
 
-const int TOTAL_TILES = 5;
+const int TOTAL_TILES = 27;
 
 
 enum {
-    TILE_ROCKMAIN,
-    TILE_ROCKCORN_LU,
-    TILE_ROCKCORN_LD,
-    TILE_ROCKCORN_RU,
-    TILE_ROCKCORN_RD
+
 };
 
 
