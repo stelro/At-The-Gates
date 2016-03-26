@@ -29,10 +29,18 @@ namespace tok {
         building = std::make_shared<Buildings>(csdl_setup,512,0,CameraX,CameraY);
         tree1 = std::make_shared<TreeObject>(csdl_setup,450,250,CameraX,CameraY);
         tree2 = std::make_shared<TreeObject>(csdl_setup,850,250,CameraX,CameraY);
+        rock1 = std::make_shared<RockObject>(csdl_setup,200,300,CameraX,CameraY,1);
+        rock2 = std::make_shared<RockObject>(csdl_setup,150,320,CameraX,CameraY,2);
+        downWall = std::make_shared<WallObjects>(csdl_setup,0,960,CameraX,CameraY,1);
+        rightWall = std::make_shared<WallObjects>(csdl_setup,0,0,CameraX,CameraY,2);
 
         enviromentObjects.push_back(building);
         enviromentObjects.push_back(tree1);
         enviromentObjects.push_back(tree2);
+        enviromentObjects.push_back(rock1);
+        enviromentObjects.push_back(rock2);
+        enviromentObjects.push_back(downWall);
+        enviromentObjects.push_back(rightWall);
 
         main_char = std::make_shared<MainCharacter>(csdl_setup, MouseX, MouseY, CameraX, CameraY,enviromentObjects);
 

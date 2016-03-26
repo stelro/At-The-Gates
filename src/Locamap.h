@@ -30,6 +30,8 @@
 #include "EnviromentObjects.h"
 #include "Buildings.h"
 #include "TreeObject.h"
+#include "RockObject.h"
+#include "WallObjects.h"
 
 //const int TILE_ASSET_WIDTH = 160;
 //const int TILE_ASSET_HEIGHT = 240;
@@ -68,6 +70,10 @@ namespace tok {
         std::shared_ptr<Buildings> building;
         std::shared_ptr<TreeObject> tree1;
         std::shared_ptr<TreeObject> tree2;
+        std::shared_ptr<RockObject> rock1;
+        std::shared_ptr<RockObject> rock2;
+        std::shared_ptr<WallObjects> downWall;
+        std::shared_ptr<WallObjects> rightWall;
 
         std::vector<std::shared_ptr<EnviromentObjects>> enviromentObjects;
 
