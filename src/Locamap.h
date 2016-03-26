@@ -29,6 +29,7 @@
 #include "MainCharacter.h"
 #include "EnviromentObjects.h"
 #include "Buildings.h"
+#include "TreeObject.h"
 
 //const int TILE_ASSET_WIDTH = 160;
 //const int TILE_ASSET_HEIGHT = 240;
@@ -65,8 +66,13 @@ namespace tok {
         SDL_Rect gTileClips[TOTAL_TILES];
 
         std::shared_ptr<Buildings> building;
+        std::shared_ptr<TreeObject> tree1;
+        std::shared_ptr<TreeObject> tree2;
 
         std::vector<std::shared_ptr<EnviromentObjects>> enviromentObjects;
+
+        bool isPressed;
+        bool debMode;
 
     public:
         Localmap(std::shared_ptr<SdlInitializer> passed_csdl_setup,int screenWidth,int screenHeight, double *passedCameraX,

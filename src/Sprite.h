@@ -50,6 +50,8 @@ namespace tok {
         SDL_Rect *_tileClips;
 
         CollisionRect Collison_Rect;
+        bool debugMode;
+
     public:
         Sprite();
         Sprite(SDL_Renderer *passed_renderer, const std::string filePath,int passedX,

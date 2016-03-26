@@ -147,6 +147,7 @@ namespace tok {
         cameraRect.w = t_Rect.w;
         cameraRect.h = t_Rect.h;
 
+
     }
 
     Sprite::Sprite(SDL_Renderer *passed_renderer,int tileType, SDL_Rect *tileClips, const std::string filePath, int passedX, int passedY,
@@ -190,6 +191,7 @@ namespace tok {
         cameraRect.y = t_Rect.y + (int)*CameraY;
         cameraRect.w = t_Rect.w;
         cameraRect.h = t_Rect.h;
+
 
     }
 
@@ -305,6 +307,7 @@ namespace tok {
         SDL_RenderCopy(renderer,texture,&cropRect,&t_Rect);
 
     }
+
 
     Sprite::~Sprite() {
         SDL_DestroyTexture(texture);

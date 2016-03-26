@@ -27,10 +27,17 @@ namespace tok {
         onPress = false;
 
         building = std::make_shared<Buildings>(csdl_setup,512,0,CameraX,CameraY);
+        tree1 = std::make_shared<TreeObject>(csdl_setup,450,250,CameraX,CameraY);
+        tree2 = std::make_shared<TreeObject>(csdl_setup,850,250,CameraX,CameraY);
+
         enviromentObjects.push_back(building);
+        enviromentObjects.push_back(tree1);
+        enviromentObjects.push_back(tree2);
 
         main_char = std::make_shared<MainCharacter>(csdl_setup, MouseX, MouseY, CameraX, CameraY,enviromentObjects);
 
+        isPressed = false;
+        debMode = false;
 
         SetTiles();
 
@@ -206,6 +213,30 @@ namespace tok {
     }
 
     void Localmap::Update() {
+
+        //Debuggin Mode
+        //Show collisoin image
+        if (csdl_setup->GetMainEvent()->type == SDL_KEYDOWN) {
+            if (!isPressed && csdl_setup->GetMainEvent()->key.keysym.sym == SDLK_F1) {
+                isPressed = true;
+
+                if (!debMode) {
+                    std::cout << "Debugging Mode" << std::endl;
+                    debMode = true;
+                }
+                else {
+                    std::cout << "Exit Debugging Mode" << std::endl;
+                    debMode = false;
+                }
+
+            }
+        }
+
+        if (csdl_setup->GetMainEvent()->type == SDL_KEYUP) {
+            if (isPressed && csdl_setup->GetMainEvent()->key.keysym.sym == SDLK_F1) {
+                isPressed = false;
+            }
+        }
 
 
     }
