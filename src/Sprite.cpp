@@ -47,6 +47,8 @@ namespace tok {
         cameraRect.y = t_Rect.y + (int)*CameraY;
         cameraRect.w = t_Rect.w;
         cameraRect.h = t_Rect.h;
+
+        debugMode = false;
     }
 
     Sprite::Sprite(const Sprite &rhs)
@@ -89,6 +91,8 @@ namespace tok {
             cameraRect.y = rhs.cameraRect.y;
             cameraRect.w = rhs.cameraRect.w;
             cameraRect.h = rhs.cameraRect.h;
+
+            debugMode = false;
 
         }
 
@@ -147,6 +151,8 @@ namespace tok {
         cameraRect.w = t_Rect.w;
         cameraRect.h = t_Rect.h;
 
+        debugMode = false;
+
 
     }
 
@@ -191,6 +197,8 @@ namespace tok {
         cameraRect.y = t_Rect.y + (int)*CameraY;
         cameraRect.w = t_Rect.w;
         cameraRect.h = t_Rect.h;
+
+        debugMode = false;
 
 
     }
@@ -294,7 +302,9 @@ namespace tok {
         Collison_Rect.SetY(t_Rect.y + (int)*CameraY);
 
         SDL_RenderCopy(renderer,texture,&cropRect,&cameraRect);
-        SDL_RenderCopy(renderer,collisionTexture,nullptr,&Collison_Rect.GetRectangle());
+
+        if (debugMode)
+            SDL_RenderCopy(renderer,collisionTexture,nullptr,&Collison_Rect.GetRectangle());
 
     }
 
@@ -303,7 +313,8 @@ namespace tok {
         //With this method, main character wont be affected of
         //the camera.
 
-        SDL_RenderCopy(renderer,collisionTexture,nullptr,&Collison_Rect.GetRectangle());
+        if (debugMode)
+            SDL_RenderCopy(renderer,collisionTexture,nullptr,&Collison_Rect.GetRectangle());
         SDL_RenderCopy(renderer,texture,&cropRect,&t_Rect);
 
     }
@@ -348,4 +359,7 @@ namespace tok {
         collider.GetRectangle().h);
     }
 
+    void Sprite::SetDebugMode(bool mode) {
+        debugMode = mode;
+    }
 }

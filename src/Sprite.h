@@ -83,6 +83,7 @@ namespace tok {
         CollisionRect GetCollisonRect() const;
         bool isColliding(CollisionRect collider);
         SDL_Rect GetPositionRect() const;
+        void SetDebugMode(bool mode);
 
     };
 

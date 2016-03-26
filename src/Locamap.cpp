@@ -254,9 +254,11 @@ namespace tok {
         //trees etc.
         for (auto i: enviromentObjects) {
             i->DrawObject();
+            i->GetObject()->SetDebugMode(debMode);
         }
 
         main_char->Draw();
         main_char->Update();
+
     }
 }
