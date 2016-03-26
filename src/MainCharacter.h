@@ -15,10 +15,12 @@
 
 #include <cmath>
 #include <memory>
+#include <vector>
 
 #include "Sprite.h"
 #include "StateMachine.h"
 #include "SdlInitializer.h"
+#include "EnviromentObjects.h"
 
 const double PI = 3.14159265359;
 //speed of animation when caracter is running
@@ -48,9 +50,14 @@ namespace tok {
 
         double distance;
         bool stopAnimation;
+
+        //We pass all enviroment object form the LocalMap to MainCharacter
+        //to detect the collision of player with the objects
+        std::vector<std::shared_ptr<EnviromentObjects>> enviromentObjects;
+
     public:
         MainCharacter(std::shared_ptr<SdlInitializer> passed_csdl_setup, int *passedMouseX, int *passedMouseY,
-                    double *passedCameraX, double *passedCameraY);
+                    double *passedCameraX, double *passedCameraY, std::vector<std::shared_ptr<EnviromentObjects>> passed_envObjects);
         ~MainCharacter();
         void Update();
         void Draw();

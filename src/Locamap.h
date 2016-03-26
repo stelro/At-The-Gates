@@ -20,12 +20,14 @@
 #include <string>
 #include <memory>
 #include <fstream>
+#include <vector>
 
 
 #include "SdlInitializer.h"
 #include "Sprite.h"
 #include "StateMachine.h"
 #include "MainCharacter.h"
+#include "EnviromentObjects.h"
 #include "Buildings.h"
 
 //const int TILE_ASSET_WIDTH = 160;
@@ -42,11 +44,6 @@ const int TILE_WIDTH = 40;
 const int TILE_HEIGHT = 40;
 
 const int TOTAL_TILES = 27;
-
-
-enum {
-
-};
 
 
 namespace tok {
@@ -69,12 +66,15 @@ namespace tok {
 
         std::shared_ptr<Buildings> building;
 
+        std::vector<std::shared_ptr<EnviromentObjects>> enviromentObjects;
+
     public:
         Localmap(std::shared_ptr<SdlInitializer> passed_csdl_setup,int screenWidth,int screenHeight, double *passedCameraX,
                 double *passedCameraY,int *passedMouseX, int *passedMouseY);
         ~Localmap();
         void Render();
         void Update();
+
 
 
     };

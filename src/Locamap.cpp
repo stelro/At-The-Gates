@@ -26,8 +26,12 @@ namespace tok {
 
         onPress = false;
 
-        main_char = std::make_shared<MainCharacter>(csdl_setup, MouseX, MouseY, CameraX, CameraY);
         building = std::make_shared<Buildings>(csdl_setup,512,0,CameraX,CameraY);
+        enviromentObjects.push_back(building);
+
+        main_char = std::make_shared<MainCharacter>(csdl_setup, MouseX, MouseY, CameraX, CameraY,enviromentObjects);
+
+
         SetTiles();
 
     }
@@ -215,7 +219,11 @@ namespace tok {
             }
          }
 
-        building->Draw();
+        //Draw all the enviroment object like buildings,
+        //trees etc.
+        for (auto i: enviromentObjects) {
+            i->DrawObject();
+        }
 
         main_char->Draw();
         main_char->Update();

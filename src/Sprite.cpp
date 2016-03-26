@@ -107,6 +107,14 @@ namespace tok {
             std::cerr << "Couldn't load image, path: " << filePath << std::endl;
         }
 
+        collisionTexture = nullptr;
+        collisionTexture = IMG_LoadTexture(renderer, "assets/collision.png");
+
+
+        if (collisionTexture == nullptr) {
+            std::cerr << "Couldn't load image" << std::endl;
+        }
+
         //texture rectangle
         t_Rect.x = passedX;
         t_Rect.y = passedY;
@@ -152,6 +160,14 @@ namespace tok {
 
         if (texture == nullptr) {
             std::cerr << "Couldn't load image, path: " << filePath << std::endl;
+        }
+
+        collisionTexture = nullptr;
+        collisionTexture = IMG_LoadTexture(renderer, "assets/collision.png");
+
+
+        if (collisionTexture == nullptr) {
+            std::cerr << "Couldn't load image" << std::endl;
         }
 
         t_Rect.x = passedX;
@@ -272,7 +288,11 @@ namespace tok {
         cameraRect.x = t_Rect.x + (int)*CameraX;
         cameraRect.y = t_Rect.y + (int)*CameraY;
 
+        Collison_Rect.SetX(t_Rect.x + (int)*CameraX);
+        Collison_Rect.SetY(t_Rect.y + (int)*CameraY);
+
         SDL_RenderCopy(renderer,texture,&cropRect,&cameraRect);
+        SDL_RenderCopy(renderer,collisionTexture,nullptr,&Collison_Rect.GetRectangle());
 
     }
 
@@ -281,7 +301,9 @@ namespace tok {
         //With this method, main character wont be affected of
         //the camera.
 
+        SDL_RenderCopy(renderer,collisionTexture,nullptr,&Collison_Rect.GetRectangle());
         SDL_RenderCopy(renderer,texture,&cropRect,&t_Rect);
+
     }
 
     Sprite::~Sprite() {

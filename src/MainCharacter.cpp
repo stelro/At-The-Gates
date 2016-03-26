@@ -11,10 +11,11 @@
  */
 
 #include "MainCharacter.h"
-#include <vector>
+
+
 namespace tok {
     MainCharacter::MainCharacter(std::shared_ptr<SdlInitializer> passed_csdl_setup, int *passedMouseX, int *passedMouseY,
-                                 double *passedCameraX, double *passedCameraY) :
+                                 double *passedCameraX, double *passedCameraY,std::vector<std::shared_ptr<EnviromentObjects>> passed_envObjects) :
     csdl_setup(passed_csdl_setup), MouseX(passedMouseX), MouseY(passedMouseY) ,CameraX(passedCameraX), CameraY(passedCameraY),
     follow(false), stopAnimation(false)
     {
@@ -32,6 +33,9 @@ namespace tok {
 
         timeCheck = SDL_GetTicks();
         distance = 0;
+
+        enviromentObjects = passed_envObjects;
+
 
     }
 
@@ -123,18 +127,61 @@ namespace tok {
 
             if (distance > 15 ) {
 
-                // 0.8f, determinates the speed of the character
 
-                if (*CameraX != xFollowPoint) {
-                    *CameraX = (*CameraX - ((*CameraX - xFollowPoint) / distance ) * 0.8f );
+
+                bool colliding = false;
+
+                for (auto i : enviromentObjects) {
+
+                    if(main_char->isColliding(i->GetObject()->GetCollisonRect())) {
+
+                        if (*CameraX > xFollowPoint) {
+                            *CameraX = *CameraX + 5;
+                        }
+
+                        if (*CameraX < xFollowPoint) {
+                            *CameraX = *CameraX - 5;
+                        }
+
+                        if (*CameraY > yFollowPoint) {
+                            *CameraY = *CameraY + 5;
+                        }
+
+                        if (*CameraY < yFollowPoint) {
+                            *CameraY = *CameraY - 5;
+                        }
+
+                        xFollowPoint = (int)*CameraX;
+                        yFollowPoint = (int)*CameraY;
+                        distance = 0;
+                        follow = false;
+                        colliding = true;
+
+                    }
+
                 }
 
-                if (*CameraY != yFollowPoint) {
-                    *CameraY = (*CameraY - ((*CameraY - yFollowPoint) / distance ) * 0.8f);
+                //if player is colliding with any object, dont follow the follow_point
+
+                if (!colliding) {
+
+                    // 0.8f, determinates the speed of the character
+                    if (*CameraX != xFollowPoint) {
+                        *CameraX = (*CameraX - ((*CameraX - xFollowPoint) / distance) * 0.8f);
+                    }
+
+                    if (*CameraY != yFollowPoint) {
+                        *CameraY = (*CameraY - ((*CameraY - yFollowPoint) / distance) * 0.8f);
+                    }
                 }
 
-                timeCheck = SDL_GetTicks();
+
             }
+
+            else
+                follow = false;
+
+            timeCheck = SDL_GetTicks();
 
         }
 

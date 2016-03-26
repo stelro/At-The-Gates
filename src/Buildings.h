@@ -9,17 +9,16 @@
 
 #include "SdlInitializer.h"
 #include "Sprite.h"
+#include "EnviromentObjects.h"
 
 namespace  tok {
 
-    class Buildings {
+    class Buildings : public EnviromentObjects {
     private:
         std::shared_ptr<SdlInitializer> csdl_setup;
+
         int x;
         int y;
-
-
-
         double *CameraX;
         double *CameraY;
 
@@ -28,9 +27,10 @@ namespace  tok {
     public:
         Buildings(std::shared_ptr<SdlInitializer> passed_csdl_setup, int passedX, int passedY, double *passedCameraX, double *passedCameraY);
         ~Buildings();
-        void Draw();
+        void DrawObject();
         int GetX() const;
         int GetY() const;
+        std::shared_ptr<Sprite> GetObject() const;
     };
 }
 
