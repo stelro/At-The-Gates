@@ -1,0 +1,25 @@
+![alt tag](http://s15.postimg.org/c7m5ic58b/game2.png)
+![alt tag](http://s9.postimg.org/wowcoi2vz/game1.png)
+
+#At The Gates - Game Engine and JRPG Game
+###### made with SDL2 and C++ 11/14
+
+##Compile and Build
+In order to compile the source, you should
+install the libraries below (for Deb/Ubuntu users)
+
+apt-get install libsdl2-dev
+apt-get install libsdl2-image-dev
+
+
+
+
+My attempt to create JRPG game with SDL2 lib
+and C++! 
+
+SDL is a cross-platform development library designed
+to provide low level access to audio, keyboard, mouse 
+joystick and graphics hardware via OpenGL and Direct3D.
+
+Main Author Stelmach Rostislav Ro
+stelmach.ro@gmail.com
