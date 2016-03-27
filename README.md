@@ -4,16 +4,23 @@
 My attempt to create JRPG game with SDL2 lib
 and C++! 
 
+Game Engine and the entire game is written from
+Scratch.
+
 ## Compile and Build
 In order to compile the source, you should
 install the libraries below (for Deb/Ubuntu users)
 ```
-apt-get install libsdl2-dev
-apt-get install libsdl2-image-dev
+sudo apt-get install libsdl2-dev
+sudo apt-get install libsdl2-image-dev
 ```
 Use CMAKE to compile and build
 
-## ABout SDL2
+```
+use -std=c++14 falgs to compile
+```
+
+## About SDL2
 SDL is a cross-platform development library designed
 to provide low level access to audio, keyboard, mouse 
 joystick and graphics hardware via OpenGL and Direct3D.
