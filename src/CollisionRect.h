@@ -20,12 +20,12 @@
  */
 
 
-#ifndef TOK_COLLISIONRECT_H
-#define TOK_COLLISIONRECT_H
+#ifndef atg_COLLISIONRECT_H
+#define atg_COLLISIONRECT_H
 
 #include <SDL2/SDL.h>
 
-namespace tok {
+namespace atg {
 
     class CollisionRect {
     private:
@@ -44,4 +44,4 @@ namespace tok {
 }
 
 
-#endif //TOK_COLLISIONRECT_H
+#endif //atg_COLLISIONRECT_H

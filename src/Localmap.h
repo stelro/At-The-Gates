@@ -23,8 +23,8 @@
  */
 
 
-#ifndef TOK_LOCAMAP_H
-#define TOK_LOCAMAP_H
+#ifndef atg_LOCAMAP_H
+#define atg_LOCAMAP_H
 
 #include <SDL2/SDL.h>
 #include <string>
@@ -60,7 +60,7 @@ const int TILE_HEIGHT = 40;
 const int TOTAL_TILES = 28;
 
 
-namespace tok {
+namespace atg {
     class Localmap : public StateMachine {
     private:
         void InitializeTiles();
@@ -106,4 +106,4 @@ namespace tok {
     };
 }
 
-#endif //TOK_LOCAMAP_H
+#endif //atg_LOCAMAP_H

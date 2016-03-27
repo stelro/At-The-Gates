@@ -22,6 +22,6 @@
 
 #include "StateMachine.h"
 
-tok::StateMachine::~StateMachine() {
+atg::StateMachine::~StateMachine() {
 
 }

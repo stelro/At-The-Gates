@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TOK_GAMEMENU_H
-#define TOK_GAMEMENU_H
+#ifndef atg_GAMEMENU_H
+#define atg_GAMEMENU_H
 
 #include <memory>
 #include "StateMachine.h"
@@ -42,7 +42,7 @@ enum {
 const int BUTTON_WIDTH = 290;
 const int BUTTON_HEIGHT = 56;
 
-namespace tok {
+namespace atg {
 
     class GameMenu : public StateMachine {
     private:
@@ -73,4 +73,4 @@ namespace tok {
 }
 
 
-#endif //TOK_GAMEMENU_H
+#endif //atg_GAMEMENU_H

@@ -19,14 +19,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TOK_ERRORHANDLER_H
-#define TOK_ERRORHANDLER_H
+#ifndef atg_ERRORHANDLER_H
+#define atg_ERRORHANDLER_H
 
 #include <exception>
 #include <iostream>
 #include <SDL2/SDL.h>
 
-namespace tok {
+namespace atg {
 
     class ErrorHandler : public std::exception {
     private:
@@ -40,4 +40,4 @@ namespace tok {
     };
 }
 
-#endif //TOK_ERRORHANDLER_H
+#endif //atg_ERRORHANDLER_H

@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TOK_NPCOBJECTS_H
-#define TOK_NPCOBJECTS_H
+#ifndef atg_NPCOBJECTS_H
+#define atg_NPCOBJECTS_H
 
 #include <memory>
 
@@ -28,7 +28,7 @@
 #include "Sprite.h"
 #include "EnviromentObjects.h"
 
-namespace tok {
+namespace atg {
 
     class NpcObjects : public EnviromentObjects {
     private:
@@ -54,4 +54,4 @@ namespace tok {
 
 
 
-#endif //TOK_NPCOBJECTS_H
+#endif //atg_NPCOBJECTS_H

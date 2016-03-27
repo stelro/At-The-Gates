@@ -20,15 +20,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TOK_STATEMACHINE_H
-#define TOK_STATEMACHINE_H
+#ifndef atg_STATEMACHINE_H
+#define atg_STATEMACHINE_H
 
 #include <iostream>
 #include <string>
 #include <stack>
 
 
-namespace tok {
+namespace atg {
 
     class StateMachine {
     public:
@@ -38,4 +38,4 @@ namespace tok {
     };
 }
 
-#endif //TOK_STATEMACHINE_H
+#endif //atg_STATEMACHINE_H

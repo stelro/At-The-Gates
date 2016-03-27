@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TOK_ROCKOBJECT_H
-#define TOK_ROCKOBJECT_H
+#ifndef atg_ROCKOBJECT_H
+#define atg_ROCKOBJECT_H
 
 #include <memory>
 
@@ -28,7 +28,7 @@
 #include "Sprite.h"
 #include "EnviromentObjects.h"
 
-namespace tok {
+namespace atg {
 
     class RockObject : public EnviromentObjects {
     private:
@@ -52,4 +52,4 @@ namespace tok {
     };
 }
 
-#endif //TOK_ROCKOBJECT_H
+#endif //atg_ROCKOBJECT_H

@@ -21,7 +21,7 @@
 
 #include "Timer.h"
 
-namespace tok {
+namespace atg {
 
     Timer::Timer()
     {

@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TOK_SDLINITIALIZER_H
-#define TOK_SDLINITIALIZER_H
+#ifndef atg_SDLINITIALIZER_H
+#define atg_SDLINITIALIZER_H
 
 
 #include <SDL2/SDL.h>
@@ -31,7 +31,7 @@
 
 #include "ErrorHandler.h"
 
-namespace tok {
+namespace atg {
 
     class SdlInitializer {
     private:
@@ -41,7 +41,7 @@ namespace tok {
     public:
         SdlInitializer();
         SdlInitializer(Uint32 flags,const std::string &title, const uint32_t pos_x, const uint32_t pos_y,
-                       const uint32_t passed_weight, const uint32_t passed_height) throw(ErrorHandler);
+                       const uint32_t passed_width, const uint32_t passed_height) throw(ErrorHandler);
         SdlInitializer &operator =(const SdlInitializer&) = delete;
         SdlInitializer(const SdlInitializer&) = delete;
         virtual ~SdlInitializer();
@@ -53,4 +53,4 @@ namespace tok {
     };
 }
 
-#endif //TOK_SDLINITIALIZER_H
+#endif //atg_SDLINITIALIZER_H

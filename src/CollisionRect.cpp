@@ -22,7 +22,7 @@
 
 #include "CollisionRect.h"
 
-namespace tok {
+namespace atg {
 
     CollisionRect::CollisionRect() :
     offsetX(0), offsetY(0)

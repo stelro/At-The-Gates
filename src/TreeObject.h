@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TOK_TREEOBJECT_H
-#define TOK_TREEOBJECT_H
+#ifndef atg_TREEOBJECT_H
+#define atg_TREEOBJECT_H
 
 #include <memory>
 
@@ -28,7 +28,7 @@
 #include "Sprite.h"
 #include "EnviromentObjects.h"
 
-namespace tok {
+namespace atg {
 
     class TreeObject : public EnviromentObjects {
     private:
@@ -53,4 +53,4 @@ namespace tok {
 }
 
 
-#endif //TOK_TREEOBJECT_H
+#endif //atg_TREEOBJECT_H

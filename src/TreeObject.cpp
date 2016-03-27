@@ -21,7 +21,7 @@
 
 #include "TreeObject.h"
 
-namespace tok {
+namespace atg {
 
     TreeObject::TreeObject(std::shared_ptr<SdlInitializer> passed_csdl_setup, int passedX, int passedY, double *passedCameraX,
                          double *passedCameraY) :

@@ -21,7 +21,7 @@
 
 #include "GameMenu.h"
 
-namespace tok {
+namespace atg {
 
     GameMenu::GameMenu(std::shared_ptr<SdlInitializer> passed_csdl_setup,bool *quit_state,double *passedCameraX, double *passedCameraY,int *passedMouseX, int *passedMouseY) :
     csdl_setup(passed_csdl_setup), CameraX(passedCameraX), CameraY(passedCameraY), MouseX(passedMouseX), MouseY(passedMouseY)

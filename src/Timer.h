@@ -19,13 +19,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TOK_TIMER_H
-#define TOK_TIMER_H
+#ifndef atg_TIMER_H
+#define atg_TIMER_H
 
 #include <iostream>
 #include <SDL2/SDL.h>
 
-namespace tok {
+namespace atg {
 
     class Timer {
     private:
@@ -61,4 +61,4 @@ namespace tok {
 }
 
 
-#endif //TOK_TIMER_H
+#endif //atg_TIMER_H

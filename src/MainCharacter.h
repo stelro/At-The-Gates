@@ -20,8 +20,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TOK_MAINCHARACTER_H
-#define TOK_MAINCHARACTER_H
+#ifndef atg_MAINCHARACTER_H
+#define atg_MAINCHARACTER_H
 
 #include <cmath>
 #include <memory>
@@ -36,7 +36,7 @@ const double PI = 3.14159265359;
 //speed of animation when caracter is running
 const int SPEED = 120;
 
-namespace tok {
+namespace atg {
 
     class MainCharacter {
     private:
@@ -77,4 +77,4 @@ namespace tok {
 }
 
 
-#endif //TOK_MAINCHARACTER_H
+#endif //atg_MAINCHARACTER_H

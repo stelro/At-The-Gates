@@ -21,7 +21,7 @@
 
 #include "ErrorHandler.h"
 
-namespace tok {
+namespace atg {
 
     ErrorHandler::ErrorHandler() :
         exception(), error_message(SDL_GetError()) { }

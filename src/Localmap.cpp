@@ -22,9 +22,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "Locamap.h"
+#include "Localmap.h"
 
-namespace tok {
+namespace atg {
 
     Localmap::Localmap(std::shared_ptr<SdlInitializer> passed_csdl_setup,int screenWidth, int screenHeight, double *passedCameraX, double *passedCameraY,
                        int *passedMouseX, int *passedMouseY) :

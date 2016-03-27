@@ -20,8 +20,8 @@
  */
 
 
-#ifndef TOK_BUILDINGS_H
-#define TOK_BUILDINGS_H
+#ifndef atg_BUILDINGS_H
+#define atg_BUILDINGS_H
 
 #include <memory>
 
@@ -29,7 +29,7 @@
 #include "Sprite.h"
 #include "EnviromentObjects.h"
 
-namespace  tok {
+namespace  atg {
 
     class Buildings : public EnviromentObjects {
     private:
@@ -52,4 +52,4 @@ namespace  tok {
     };
 }
 
-#endif //TOK_BUILDINGS_H
+#endif //atg_BUILDINGS_H

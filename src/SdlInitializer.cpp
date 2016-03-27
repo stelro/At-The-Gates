@@ -24,17 +24,17 @@
 #include "SdlInitializer.h"
 #include "ErrorHandler.h"
 
-namespace tok {
+namespace atg {
 
     SdlInitializer::SdlInitializer(Uint32 flags, const std::string &title, const uint32_t pos_x,
-                                   const uint32_t pos_y, const uint32_t passed_weight, const uint32_t passed_height) throw (ErrorHandler) :
+                                   const uint32_t pos_y, const uint32_t passed_width, const uint32_t passed_height) throw (ErrorHandler) :
         window(nullptr), renderer(nullptr)
     {
 
         if (SDL_Init(flags) != 0)
             throw ErrorHandler();
 
-        window = SDL_CreateWindow(title.c_str(), pos_x, pos_y, passed_weight, passed_height,
+        window = SDL_CreateWindow(title.c_str(), pos_x, pos_y, passed_width, passed_height,
                                   SDL_WINDOW_OPENGL);
 
         if (window == nullptr) {

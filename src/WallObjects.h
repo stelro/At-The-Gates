@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TOK_WALLOBJECTS_H
-#define TOK_WALLOBJECTS_H
+#ifndef atg_WALLOBJECTS_H
+#define atg_WALLOBJECTS_H
 
 #include <memory>
 
@@ -29,7 +29,7 @@
 #include "EnviromentObjects.h"
 
 
-namespace tok {
+namespace atg {
 
     class WallObjects : public EnviromentObjects {
     private:
@@ -54,4 +54,4 @@ namespace tok {
 }
 
 
-#endif //TOK_WALLOBJECTS_H
+#endif //atg_WALLOBJECTS_H

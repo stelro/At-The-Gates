@@ -23,7 +23,7 @@
 #include "MainCharacter.h"
 
 
-namespace tok {
+namespace atg {
     MainCharacter::MainCharacter(std::shared_ptr<SdlInitializer> passed_csdl_setup, int *passedMouseX, int *passedMouseY,
                                  double *passedCameraX, double *passedCameraY,std::vector<std::shared_ptr<EnviromentObjects>> passed_envObjects) :
     csdl_setup(passed_csdl_setup), MouseX(passedMouseX), MouseY(passedMouseY) ,CameraX(passedCameraX), CameraY(passedCameraY),

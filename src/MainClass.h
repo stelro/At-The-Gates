@@ -21,8 +21,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TOK_MAINCLASS_H
-#define TOK_MAINCLASS_H
+#ifndef atg_MAINCLASS_H
+#define atg_MAINCLASS_H
 
 #include <stack>
 #include <string>
@@ -33,7 +33,7 @@
 #include "StateMachine.h"
 #include "SdlInitializer.h"
 #include "Timer.h"
-#include "Locamap.h"
+#include "Localmap.h"
 #include "MainCharacter.h"
 #include "GameMenu.h"
 
@@ -47,7 +47,7 @@ enum {
 
 const int FRAMES_PER_SECOND = 200;
 
-namespace tok {
+namespace atg {
 
     class MainClass {
     private:
@@ -111,4 +111,4 @@ namespace tok {
 
 
 
-#endif //TOK_MAINCLASS_H
+#endif //atg_MAINCLASS_H

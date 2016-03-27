@@ -23,7 +23,7 @@
 
 #include "MainClass.h"
 
-namespace  tok {
+namespace  atg {
 
     MainClass::MainClass(const std::string &title, int possitionX, int possitionY, int passedWidth, int passedHeight) :
     CameraX(0), CameraY(0), MouseX(0), MouseY(0)

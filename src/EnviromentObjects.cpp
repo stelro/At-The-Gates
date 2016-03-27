@@ -21,7 +21,7 @@
 
 #include "EnviromentObjects.h"
 
-namespace tok {
+namespace atg {
 
     EnviromentObjects::~EnviromentObjects() {
 

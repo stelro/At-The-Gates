@@ -21,7 +21,7 @@
 
 #include "RockObject.h"
 
-namespace tok {
+namespace atg {
 
     RockObject::RockObject(std::shared_ptr<SdlInitializer> passed_csdl_setup, int passedX, int passedY, double *passedCameraX,
                            double *passedCameraY, unsigned short rockType) :

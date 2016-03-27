@@ -19,8 +19,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TOK_SPRITE_H
-#define TOK_SPRITE_H
+#ifndef atg_SPRITE_H
+#define atg_SPRITE_H
 
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
@@ -28,7 +28,7 @@
 
 #include "CollisionRect.h"
 
-namespace tok {
+namespace atg {
 
     class Sprite {
     private:
@@ -101,4 +101,4 @@ namespace tok {
 }
 
 
-#endif //TOK_SPRITE_H
+#endif //atg_SPRITE_H

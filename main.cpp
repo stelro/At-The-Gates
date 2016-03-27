@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
 
-    tok::MainClass *game = new tok::MainClass("At The Gates", 0,0,1024,768);
+    atg::MainClass *game = new atg::MainClass("At The Gates", 0,0,1024,768);
     game->GameLoop();
 
     delete game;

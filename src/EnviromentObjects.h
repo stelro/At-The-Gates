@@ -19,13 +19,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TOK_ENVIROMENTOBJECTS_H
-#define TOK_ENVIROMENTOBJECTS_H
+#ifndef atg_ENVIROMENTOBJECTS_H
+#define atg_ENVIROMENTOBJECTS_H
 
 #include <memory>
 #include "Sprite.h"
 
-namespace tok {
+namespace atg {
 
     class EnviromentObjects {
     public:
@@ -38,4 +38,4 @@ namespace tok {
 }
 
 
-#endif //TOK_ENVIROMENTOBJECTS_H
+#endif //atg_ENVIROMENTOBJECTS_H

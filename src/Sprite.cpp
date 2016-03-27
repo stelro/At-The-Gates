@@ -21,7 +21,7 @@
 
 #include "Sprite.h"
 
-namespace tok {
+namespace atg {
 
     Sprite::Sprite() :
         renderer(nullptr), texture(nullptr)

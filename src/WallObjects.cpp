@@ -21,7 +21,7 @@
 
 #include "WallObjects.h"
 
-namespace tok {
+namespace atg {
 
     WallObjects::WallObjects(std::shared_ptr<SdlInitializer> passed_csdl_setup, int passedX, int passedY, double *passedCameraX,
                            double *passedCameraY, unsigned short rockType) :
