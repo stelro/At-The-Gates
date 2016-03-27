@@ -63,81 +63,56 @@ namespace atg {
         debugMode = false;
     }
 
-    Sprite::Sprite(const Sprite &rhs)
-    {
-
-        if ( this != &rhs ) {
-
-            renderer = rhs.renderer;
-            texture = rhs.texture;
-
-
-            //texture rectangle
-            t_Rect.x = rhs.t_Rect.x;
-            t_Rect.y = rhs.t_Rect.y;
-            t_Rect.w = rhs.t_Rect.w;
-            t_Rect.h = rhs.t_Rect.h;
-
-            SDL_QueryTexture(texture,nullptr,nullptr,&textureWidth,&textureHeight);
-
-            cropRect.x = rhs.cropRect.x;
-            cropRect.y = rhs.cropRect.y;
-            cropRect.w = rhs.cropRect.w;
-            cropRect.h = rhs.cropRect.h;
-
-            xPossition = rhs.xPossition;
-            yPossition = rhs.yPossition;
-
-            xOrigin = rhs.xOrigin;
-            yOrigin = rhs.yOrigin;
-
-            currentFrame = rhs.currentFrame;
-
-            frameAmountX = rhs.frameAmountX;
-            frameAmountY = rhs.frameAmountY;
-
-            CameraX = rhs.CameraX;
-            CameraY = rhs.CameraY;
-
-            cameraRect.x = rhs.cameraRect.x;
-            cameraRect.y = rhs.cameraRect.y;
-            cameraRect.w = rhs.cameraRect.w;
-            cameraRect.h = rhs.cameraRect.h;
-
-            debugMode = false;
-
-        }
-
-    }
-
     Sprite::Sprite(SDL_Renderer *passed_renderer, const std::string filePath, int passedX, int passedY,
                    int passedWidth, int passedHeight, double *passedCameraX, double *passedCameraY,CollisionRect passed_CollisonRect) :
-    renderer(passed_renderer), texture(nullptr)
+    renderer(passed_renderer), texture(nullptr), collisionTexture(nullptr), Collison_Rect(passed_CollisonRect)
 
     {
 
-        Collison_Rect = passed_CollisonRect;
+
         texture = IMG_LoadTexture(renderer, filePath.c_str());
 
         if (texture == nullptr) {
             std::cerr << "Couldn't load image, path: " << filePath << std::endl;
         }
 
-        collisionTexture = nullptr;
-        collisionTexture = IMG_LoadTexture(renderer, "assets/collision.png");
+        /*
+         * collison rectangle and collison texture , used for the collisoin image
+         * only in the DEBUGNING mode
+         * To enter debug mode, press F1 in localmap state
+         */
 
+        collisionTexture = IMG_LoadTexture(renderer, "assets/collision.png");
 
         if (collisionTexture == nullptr) {
             std::cerr << "Couldn't load image" << std::endl;
         }
 
-        //texture rectangle
+        /*
+         * Texture rectangle
+         * We use rectangles, to render images/textures on the screen
+         * with renderer and set specific width/height - possitions.
+         * We need rectangles to tell the renderer the exact dimensions of the
+         * image and the possiton we want to render the texture
+         */
+
         t_Rect.x = passedX;
         t_Rect.y = passedY;
         t_Rect.w = passedWidth;
         t_Rect.h = passedHeight;
 
+        /*
+         * SDL_QueryTexture, we use this function to query the attributes of a texture
+         * return 0 on success, or a negative error code on failuer.
+         * we can use SDL_GetError() for more information
+         */
+
         SDL_QueryTexture(texture,nullptr,nullptr,&textureWidth,&textureHeight);
+
+        /* crop rectangle
+         * we use this rectangle to crop the sprite image into frames
+         * and give the pseudo animation
+         */
 
         cropRect.x = 0;
         cropRect.y = 0;
@@ -211,8 +186,154 @@ namespace atg {
         cameraRect.h = t_Rect.h;
 
         debugMode = false;
+    }
+
+    //copy constructor
+    Sprite::Sprite(const Sprite &rhs) {
+
+        if ( this != &rhs ) {
+
+            *CameraX = *rhs.CameraX;
+            *CameraY = *rhs.CameraY;
+
+            animationDelay = rhs.animationDelay;
 
 
+            _tileType = rhs._tileType;
+            delete _tileClips;
+            _tileClips = rhs._tileClips;
+
+            renderer = rhs.renderer;
+            SDL_DestroyTexture(texture);
+            texture = rhs.texture;
+            SDL_DestroyTexture(collisionTexture);
+            collisionTexture = rhs.collisionTexture;
+            collisionTexture = rhs.collisionTexture;
+
+            textureWidth = rhs.textureWidth;
+            textureHeight = rhs.textureHeight;
+
+            if (texture == nullptr) {
+                std::cerr << "Couldn't load image, path"<< std::endl;
+            }
+
+
+            if (collisionTexture == nullptr) {
+                std::cerr << "Couldn't load image" << std::endl;
+            }
+
+
+            t_Rect.x = rhs.t_Rect.x;
+            t_Rect.y = rhs.t_Rect.y;
+            t_Rect.w = rhs.t_Rect.w;
+            t_Rect.h = rhs.t_Rect.h;
+
+            SDL_QueryTexture(texture,nullptr,nullptr,&textureWidth,&textureHeight);
+
+            cropRect.x = rhs.cropRect.x;
+            cropRect.y = rhs.cropRect.y;
+            cropRect.w = rhs.cropRect.w;
+            cropRect.h = rhs.cropRect.h;
+
+            xPossition = rhs.xPossition;
+            yPossition = rhs.yPossition;
+
+            xOrigin = rhs.xOrigin;
+            yOrigin = rhs.yOrigin;
+
+            currentFrame = rhs.currentFrame;
+
+            frameAmountX = rhs.frameAmountX;
+            frameAmountY = rhs.frameAmountY;
+
+            CameraX = rhs.CameraX;
+            CameraY = rhs.CameraY;
+
+            cameraRect.x = rhs.cameraRect.x;
+            cameraRect.y = rhs.cameraRect.y;
+            cameraRect.w = rhs.cameraRect.w;
+            cameraRect.h = rhs.cameraRect.h;
+
+            debugMode = rhs.debugMode;
+        }
+    }
+
+    //Copy assigment operator
+    Sprite &Sprite::operator =(const Sprite &rhs) {
+
+        if ( this != &rhs ) {
+
+            *CameraX = *rhs.CameraX;
+            *CameraY = *rhs.CameraY;
+
+            animationDelay = rhs.animationDelay;
+
+
+            _tileType = rhs._tileType;
+            delete _tileClips;
+            _tileClips = rhs._tileClips;
+
+            renderer = rhs.renderer;
+            SDL_DestroyTexture(texture);
+            texture = rhs.texture;
+            SDL_DestroyTexture(collisionTexture);
+            collisionTexture = rhs.collisionTexture;
+            collisionTexture = rhs.collisionTexture;
+
+            textureWidth = rhs.textureWidth;
+            textureHeight = rhs.textureHeight;
+
+            if (texture == nullptr) {
+                std::cerr << "Couldn't load image, path"<< std::endl;
+            }
+
+
+            if (collisionTexture == nullptr) {
+                std::cerr << "Couldn't load image" << std::endl;
+            }
+
+
+            t_Rect.x = rhs.t_Rect.x;
+            t_Rect.y = rhs.t_Rect.y;
+            t_Rect.w = rhs.t_Rect.w;
+            t_Rect.h = rhs.t_Rect.h;
+
+            SDL_QueryTexture(texture,nullptr,nullptr,&textureWidth,&textureHeight);
+
+            cropRect.x = rhs.cropRect.x;
+            cropRect.y = rhs.cropRect.y;
+            cropRect.w = rhs.cropRect.w;
+            cropRect.h = rhs.cropRect.h;
+
+            xPossition = rhs.xPossition;
+            yPossition = rhs.yPossition;
+
+            xOrigin = rhs.xOrigin;
+            yOrigin = rhs.yOrigin;
+
+            currentFrame = rhs.currentFrame;
+
+            frameAmountX = rhs.frameAmountX;
+            frameAmountY = rhs.frameAmountY;
+
+            CameraX = rhs.CameraX;
+            CameraY = rhs.CameraY;
+
+            cameraRect.x = rhs.cameraRect.x;
+            cameraRect.y = rhs.cameraRect.y;
+            cameraRect.w = rhs.cameraRect.w;
+            cameraRect.h = rhs.cameraRect.h;
+
+            debugMode = rhs.debugMode;
+        }
+
+        return (*this);
+
+    }
+
+    Sprite::~Sprite() {
+        SDL_DestroyTexture(texture);
+        SDL_DestroyTexture(collisionTexture);
     }
 
     void Sprite::PlayAnimation(int beginFrame, int endFrame, int row, unsigned speed) {
@@ -313,9 +434,21 @@ namespace atg {
         Collison_Rect.SetX(t_Rect.x + (int)*CameraX);
         Collison_Rect.SetY(t_Rect.y + (int)*CameraY);
 
+        /*
+         * SDL_RenderCopy, with this function we copy a portion of the thexture
+         * to the current rendering target!
+         * function parameters in order from left to right ->
+         * 1. the rendering context
+         * 2. the source texture
+         * 3. the soure SDL_Rect structure, or NULL for the entire texture
+         * 4. the destination SDL_Rect structure or NULL
+         * the texture will be stretched to fill the given rectangle
+         */
+
         SDL_RenderCopy(renderer,texture,&cropRect,&cameraRect);
 
         if (debugMode)
+            //We render collision texture only if the user enter's in debug mode
             SDL_RenderCopy(renderer,collisionTexture,nullptr,&Collison_Rect.GetRectangle());
 
     }
@@ -325,15 +458,11 @@ namespace atg {
         //With this method, main character wont be affected of
         //the camera.
 
+        //se the comments above, in Sprite::Draw() function
         if (debugMode)
             SDL_RenderCopy(renderer,collisionTexture,nullptr,&Collison_Rect.GetRectangle());
         SDL_RenderCopy(renderer,texture,&cropRect,&t_Rect);
 
-    }
-
-
-    Sprite::~Sprite() {
-        SDL_DestroyTexture(texture);
     }
 
 

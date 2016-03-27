@@ -44,6 +44,7 @@ namespace atg {
         void UpdateControllers();
 
         std::shared_ptr<Sprite> main_char;
+
         std::shared_ptr<SdlInitializer> csdl_setup;
 
         int *MouseX;

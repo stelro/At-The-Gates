@@ -28,8 +28,11 @@ namespace atg {
     csdl_setup(passed_csdl_setup), x(passedX), y(passedY), CameraX(passedCameraX), CameraY(passedCameraY)
     {
 
-        building1 = std::make_shared<Sprite>(csdl_setup->GetRenderer(), "assets/buildings/building2.png",x,y,340,314,
-                                             CameraX,CameraY,CollisionRect(0,60,340,260));
+        //building1 = std::make_shared<Sprite>(csdl_setup->GetRenderer(), "assets/buildings/building2.png",x,y,340,314,
+          //                                   CameraX,CameraY,CollisionRect(0,60,340,260));
+
+        building  = std::make_shared<Sprite>(csdl_setup->GetRenderer(), "assets/buildings/building2.png",x,y,340,314,
+                                           CameraX,CameraY,CollisionRect(0,60,340,260));
 
 
     }
@@ -48,12 +51,12 @@ namespace atg {
     }
 
     void Buildings::DrawObject() {
-        if (100 >= *CameraX + building1->GetPositionRect().y)
-            building1->Draw();
+        if (100 >= *CameraX + building->GetPositionRect().y)
+            building->Draw();
     }
 
     std::shared_ptr<Sprite> Buildings::GetObject() const {
-        return building1;
+        return building;
     }
 
 

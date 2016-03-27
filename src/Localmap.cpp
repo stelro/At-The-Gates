@@ -31,9 +31,12 @@ namespace atg {
     csdl_setup(passed_csdl_setup), CameraX(passedCameraX), CameraY(passedCameraY), MouseX(passedMouseX), MouseY(passedMouseY)
     {
 
+        /*
+         * Initialize the tiles which we use to build our map
+         */
+
         InitializeTiles();
 
-        onPress = false;
 
         building = std::make_shared<Buildings>(csdl_setup,512,80,CameraX,CameraY);
         tree1 = std::make_shared<TreeObject>(csdl_setup,450,280,CameraX,CameraY);
@@ -46,7 +49,7 @@ namespace atg {
         leftWall = std::make_shared<WallObjects>(csdl_setup,1315,0,CameraX,CameraY,4);
         npc = std::make_shared<NpcObjects>(csdl_setup,560,350,CameraX,CameraY,1);
 
-        enviromentObjects.push_back(building);
+
         enviromentObjects.push_back(tree1);
         enviromentObjects.push_back(tree2);
         enviromentObjects.push_back(rock1);
@@ -54,10 +57,11 @@ namespace atg {
         enviromentObjects.push_back(downWall);
         enviromentObjects.push_back(rightWall);
         enviromentObjects.push_back(upWall);
+        enviromentObjects.push_back(building);
         enviromentObjects.push_back(leftWall);
         enviromentObjects.push_back(npc);
 
-        main_char = std::make_shared<MainCharacter>(csdl_setup, MouseX, MouseY, CameraX, CameraY,enviromentObjects);
+        main_char = std::make_unique<MainCharacter>(csdl_setup, MouseX, MouseY, CameraX, CameraY,enviromentObjects);
 
         isPressed = false;
         debMode = false;
@@ -69,9 +73,14 @@ namespace atg {
     Localmap::~Localmap() {
 
 
+
     }
 
     void Localmap::InitializeTiles() {
+
+        /*
+         * We crop the tiles from the entire image
+         */
 
         gTileClips[ 0 ].x = 0;
         gTileClips[ 0 ].y = 0;

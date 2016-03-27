@@ -33,6 +33,8 @@ namespace atg {
         main_char = std::make_shared<Sprite>(csdl_setup->GetRenderer(), "assets/death_scythe_ani.png", 300,250,50,80,
                                 CameraX, CameraY,CollisionRect(280,260,35,30));
 
+
+
         //----------------------------------
         //set origin, set the half width and height
         //of the main character

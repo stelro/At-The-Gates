@@ -44,8 +44,7 @@
 #include "WallObjects.h"
 #include "NpcObjects.h"
 
-//const int TILE_ASSET_WIDTH = 160;
-//const int TILE_ASSET_HEIGHT = 240;
+
 
 
 //------------------------------------
@@ -61,14 +60,14 @@ const int TOTAL_TILES = 28;
 
 
 namespace atg {
+
     class Localmap : public StateMachine {
     private:
         void InitializeTiles();
         void SetTiles();
-        std::shared_ptr<SdlInitializer> csdl_setup;
-        std::shared_ptr<MainCharacter> main_char;
 
-        bool onPress;
+        std::shared_ptr<SdlInitializer> csdl_setup;
+        std::unique_ptr<MainCharacter> main_char;
 
         double *CameraX;
         double *CameraY;
@@ -97,11 +96,11 @@ namespace atg {
     public:
         Localmap(std::shared_ptr<SdlInitializer> passed_csdl_setup,int screenWidth,int screenHeight, double *passedCameraX,
                 double *passedCameraY,int *passedMouseX, int *passedMouseY);
+        Localmap(const Localmap &rhs) = delete;
+        Localmap &operator =(const Localmap &rhs) = delete;
         ~Localmap();
         void Render();
         void Update();
-
-
 
     };
 }

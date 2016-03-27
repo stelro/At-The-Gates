@@ -40,7 +40,8 @@ namespace  atg {
         double *CameraX;
         double *CameraY;
 
-        std::shared_ptr<Sprite> building1;
+       // std::shared_ptr<Sprite> building1;
+       std::shared_ptr<Sprite> building;
 
     public:
         Buildings(std::shared_ptr<SdlInitializer> passed_csdl_setup, int passedX, int passedY, double *passedCameraX, double *passedCameraY);
