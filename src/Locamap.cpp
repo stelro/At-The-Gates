@@ -35,6 +35,7 @@ namespace tok {
         rightWall = std::make_shared<WallObjects>(csdl_setup,0,0,CameraX,CameraY,2);
         upWall = std::make_shared<WallObjects>(csdl_setup,40,-10,CameraX,CameraY,3);
         leftWall = std::make_shared<WallObjects>(csdl_setup,1315,0,CameraX,CameraY,4);
+        npc = std::make_shared<NpcObjects>(csdl_setup,560,350,CameraX,CameraY,1);
 
         enviromentObjects.push_back(building);
         enviromentObjects.push_back(tree1);
@@ -45,6 +46,7 @@ namespace tok {
         enviromentObjects.push_back(rightWall);
         enviromentObjects.push_back(upWall);
         enviromentObjects.push_back(leftWall);
+        enviromentObjects.push_back(npc);
 
         main_char = std::make_shared<MainCharacter>(csdl_setup, MouseX, MouseY, CameraX, CameraY,enviromentObjects);
 

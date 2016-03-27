@@ -12,7 +12,7 @@ include_directories(${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INC
 
 
 
-set(SOURCE_FILES main.cpp src/ErrorHandler.cpp src/ErrorHandler.h src/SdlInitializer.cpp src/SdlInitializer.h src/Timer.cpp src/Timer.h src/StateMachine.cpp src/StateMachine.h src/MainClass.cpp src/MainClass.h src/Sprite.cpp src/Sprite.h src/Locamap.cpp src/Locamap.h src/MainCharacter.cpp src/MainCharacter.h src/GameMenu.cpp src/GameMenu.h src/Buildings.cpp src/Buildings.h src/CollisionRect.cpp src/CollisionRect.h src/EnviromentObjects.cpp src/EnviromentObjects.h src/TreeObject.cpp src/TreeObject.h src/RockObject.cpp src/RockObject.h src/WallObjects.cpp src/WallObjects.h)
+set(SOURCE_FILES main.cpp src/ErrorHandler.cpp src/ErrorHandler.h src/SdlInitializer.cpp src/SdlInitializer.h src/Timer.cpp src/Timer.h src/StateMachine.cpp src/StateMachine.h src/MainClass.cpp src/MainClass.h src/Sprite.cpp src/Sprite.h src/Locamap.cpp src/Locamap.h src/MainCharacter.cpp src/MainCharacter.h src/GameMenu.cpp src/GameMenu.h src/Buildings.cpp src/Buildings.h src/CollisionRect.cpp src/CollisionRect.h src/EnviromentObjects.cpp src/EnviromentObjects.h src/TreeObject.cpp src/TreeObject.h src/RockObject.cpp src/RockObject.h src/WallObjects.cpp src/WallObjects.h src/NpcObjects.cpp src/NpcObjects.h)
 add_executable(tok ${SOURCE_FILES})
 target_link_libraries(tok ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES})
 
