@@ -46,7 +46,7 @@ const int TILES_COL = 34;
 const int TILE_WIDTH = 40;
 const int TILE_HEIGHT = 40;
 
-const int TOTAL_TILES = 27;
+const int TOTAL_TILES = 28;
 
 
 namespace tok {
@@ -74,6 +74,8 @@ namespace tok {
         std::shared_ptr<RockObject> rock2;
         std::shared_ptr<WallObjects> downWall;
         std::shared_ptr<WallObjects> rightWall;
+        std::shared_ptr<WallObjects> upWall;
+        std::shared_ptr<WallObjects> leftWall;
 
         std::vector<std::shared_ptr<EnviromentObjects>> enviromentObjects;
 

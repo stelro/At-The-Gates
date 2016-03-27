@@ -22,6 +22,17 @@ namespace tok {
                 wall = std::make_shared<Sprite>(csdl_setup->GetRenderer(), "assets/objects/rightwall.png", x, y, 45, 1000,
                                                 CameraX, CameraY, CollisionRect(0, 0, 45, 1000));
                 break;
+                //up wall
+            case 3:
+                wall = std::make_shared<Sprite>(csdl_setup->GetRenderer(), "assets/objects/upwall.png", x, y, 1280, 97,
+                                                CameraX, CameraY, CollisionRect(0, 0, 1280, 97));
+                break;
+                //left wall
+            case 4:
+                wall = std::make_shared<Sprite>(csdl_setup->GetRenderer(), "assets/objects/leftwall.png", x, y, 45, 1000,
+                                                CameraX, CameraY, CollisionRect(0, 0, 45, 1000));
+                break;
+
         }
 
 

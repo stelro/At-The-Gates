@@ -26,13 +26,15 @@ namespace tok {
 
         onPress = false;
 
-        building = std::make_shared<Buildings>(csdl_setup,512,0,CameraX,CameraY);
-        tree1 = std::make_shared<TreeObject>(csdl_setup,450,250,CameraX,CameraY);
-        tree2 = std::make_shared<TreeObject>(csdl_setup,850,250,CameraX,CameraY);
+        building = std::make_shared<Buildings>(csdl_setup,512,80,CameraX,CameraY);
+        tree1 = std::make_shared<TreeObject>(csdl_setup,450,280,CameraX,CameraY);
+        tree2 = std::make_shared<TreeObject>(csdl_setup,850,280,CameraX,CameraY);
         rock1 = std::make_shared<RockObject>(csdl_setup,200,300,CameraX,CameraY,1);
         rock2 = std::make_shared<RockObject>(csdl_setup,150,320,CameraX,CameraY,2);
         downWall = std::make_shared<WallObjects>(csdl_setup,0,960,CameraX,CameraY,1);
         rightWall = std::make_shared<WallObjects>(csdl_setup,0,0,CameraX,CameraY,2);
+        upWall = std::make_shared<WallObjects>(csdl_setup,40,-10,CameraX,CameraY,3);
+        leftWall = std::make_shared<WallObjects>(csdl_setup,1315,0,CameraX,CameraY,4);
 
         enviromentObjects.push_back(building);
         enviromentObjects.push_back(tree1);
@@ -41,6 +43,8 @@ namespace tok {
         enviromentObjects.push_back(rock2);
         enviromentObjects.push_back(downWall);
         enviromentObjects.push_back(rightWall);
+        enviromentObjects.push_back(upWall);
+        enviromentObjects.push_back(leftWall);
 
         main_char = std::make_shared<MainCharacter>(csdl_setup, MouseX, MouseY, CameraX, CameraY,enviromentObjects);
 
@@ -192,6 +196,11 @@ namespace tok {
         gTileClips[ 26 ].y = 240;
         gTileClips[ 26 ].w = TILE_WIDTH;
         gTileClips[ 26 ].h = TILE_HEIGHT;
+
+        gTileClips[ 27 ].x = 120;
+        gTileClips[ 27 ].y = 240;
+        gTileClips[ 27 ].w = TILE_WIDTH;
+        gTileClips[ 27 ].h = TILE_HEIGHT;
 
     }
 
