@@ -24,7 +24,6 @@
 #ifndef atg_MAINCLASS_H
 #define atg_MAINCLASS_H
 
-#include <stack>
 #include <string>
 #include <iostream>
 #include <memory>
@@ -36,6 +35,8 @@
 #include "Localmap.h"
 #include "MainCharacter.h"
 #include "GameMenu.h"
+
+#include "../lib/dstack.h"
 
 
 enum {
@@ -56,7 +57,7 @@ namespace atg {
         std::shared_ptr<Localmap> localmap;
         std::shared_ptr<GameMenu> gamemenu;
 
-        std::stack<std::shared_ptr<StateMachine>> stateStack;
+        atg::Stack<std::shared_ptr<StateMachine>> stateStack;
 
         Timer fps;
 
@@ -89,19 +90,19 @@ namespace atg {
     }
 
     inline void MainClass::PopStateAndDelete() {
-        if (!stateStack.empty()) {
+        if (!stateStack.IsEmpty()) {
             this->stateStack.pop();
         }
     }
 
     inline void MainClass::ChangeState(std::shared_ptr<StateMachine> state) {
-        if (!this->stateStack.empty())
+        if (!this->stateStack.IsEmpty())
             this->stateStack.pop();
         PushState(state);
     }
 
     inline std::shared_ptr<StateMachine> MainClass::TopState() {
-        if (this->stateStack.empty())
+        if (this->stateStack.IsEmpty())
             return nullptr;
         else
             return this->stateStack.top();
