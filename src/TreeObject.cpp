@@ -23,8 +23,8 @@
 
 namespace atg {
 
-    TreeObject::TreeObject(std::shared_ptr<SdlInitializer> passed_csdl_setup, int passedX, int passedY, double *passedCameraX,
-                         double *passedCameraY) :
+    TreeObject::TreeObject(std::shared_ptr<SdlInitializer> passed_csdl_setup,const int passedX,const int passedY,double* const passedCameraX,
+                         double* const passedCameraY) :
         csdl_setup(passed_csdl_setup), x(passedX), y(passedY), CameraX(passedCameraX), CameraY(passedCameraY)
     {
 

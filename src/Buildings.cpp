@@ -23,13 +23,12 @@
 
 namespace atg {
 
-    Buildings::Buildings(std::shared_ptr<SdlInitializer> passed_csdl_setup, int passedX, int passedY, double *passedCameraX,
-                         double *passedCameraY) :
+    Buildings::Buildings(std::shared_ptr<SdlInitializer> passed_csdl_setup, const int passedX,const int passedY, double* const passedCameraX,
+                         double *const passedCameraY) :
     csdl_setup(passed_csdl_setup), x(passedX), y(passedY), CameraX(passedCameraX), CameraY(passedCameraY)
     {
 
-        //building1 = std::make_shared<Sprite>(csdl_setup->GetRenderer(), "assets/buildings/building2.png",x,y,340,314,
-          //                                   CameraX,CameraY,CollisionRect(0,60,340,260));
+
 
         building  = std::make_shared<Sprite>(csdl_setup->GetRenderer(), "assets/buildings/building2.png",x,y,340,314,
                                            CameraX,CameraY,CollisionRect(0,60,340,260));

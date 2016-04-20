@@ -63,7 +63,7 @@ namespace atg {
         }
     }
 
-    size_t Timer::get_ticks()
+    size_t Timer::get_ticks() const
     {
         if (_started) {
 
@@ -77,12 +77,12 @@ namespace atg {
         return 0;
     }
 
-    bool Timer::is_started()
+    bool Timer::is_started() const
     {
         return _started;
     }
 
-    bool Timer::is_paused()
+    bool Timer::is_paused() const
     {
         return _paused;
     }

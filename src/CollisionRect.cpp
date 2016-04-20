@@ -30,7 +30,7 @@ namespace atg {
         SetRectangle(0,0,0,0);
     }
 
-    CollisionRect::CollisionRect(int passedX, int passedY, int passedWidth, int passedHeight) :
+    CollisionRect::CollisionRect(const int passedX, const int passedY, const int passedWidth, const int passedHeight) :
     offsetX(passedX), offsetY(passedY)
     {
         SetRectangle(0,0,passedWidth,passedHeight);
@@ -40,7 +40,7 @@ namespace atg {
 
     }
 
-    void CollisionRect::SetRectangle(int passedX, int passedY, int passedWidth, int passedHeight) {
+    void CollisionRect::SetRectangle(const int passedX, const int passedY, const int passedWidth, const int passedHeight) {
 
         CollisionRectangle.x = passedX + offsetX;
         CollisionRectangle.y = passedY + offsetY;
@@ -48,11 +48,11 @@ namespace atg {
         CollisionRectangle.h = passedHeight;
     }
 
-    void CollisionRect::SetX(int x) {
+    void CollisionRect::SetX(const int x) {
         CollisionRectangle.x = x + offsetX;
     }
 
-    void CollisionRect::SetY(int y) {
+    void CollisionRect::SetY(const int y) {
         CollisionRectangle.y = y + offsetY;
     }
 

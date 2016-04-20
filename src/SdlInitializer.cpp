@@ -26,7 +26,7 @@
 
 namespace atg {
 
-    SdlInitializer::SdlInitializer(Uint32 flags, const std::string &title, const uint32_t pos_x,
+    SdlInitializer::SdlInitializer(const Uint32 flags, const std::string &title, const uint32_t pos_x,
                                    const uint32_t pos_y, const uint32_t passed_width, const uint32_t passed_height) throw (ErrorHandler) :
         window(nullptr), renderer(nullptr)
     {

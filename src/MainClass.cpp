@@ -25,7 +25,7 @@
 
 namespace  atg {
 
-    MainClass::MainClass(const std::string &title, int possitionX, int possitionY, int passedWidth, int passedHeight) :
+    MainClass::MainClass(const std::string &title, const int possitionX,const int possitionY,const int passedWidth,const int passedHeight) :
     CameraX(0), CameraY(0), MouseX(0), MouseY(0)
     {
 

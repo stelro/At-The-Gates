@@ -23,7 +23,7 @@
 
 namespace atg {
 
-    GameMenu::GameMenu(std::shared_ptr<SdlInitializer> passed_csdl_setup,bool *quit_state,double *passedCameraX, double *passedCameraY,int *passedMouseX, int *passedMouseY) :
+    GameMenu::GameMenu(std::shared_ptr<SdlInitializer> passed_csdl_setup,bool* const quit_state,double* const passedCameraX, double* const passedCameraY,int* const passedMouseX, int* const passedMouseY) :
     csdl_setup(passed_csdl_setup), CameraX(passedCameraX), CameraY(passedCameraY), MouseX(passedMouseX), MouseY(passedMouseY)
     {
 

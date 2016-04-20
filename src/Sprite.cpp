@@ -63,8 +63,8 @@ namespace atg {
         debugMode = false;
     }
 
-    Sprite::Sprite(SDL_Renderer *passed_renderer, const std::string filePath, int passedX, int passedY,
-                   int passedWidth, int passedHeight, double *passedCameraX, double *passedCameraY,CollisionRect passed_CollisonRect) :
+    Sprite::Sprite(SDL_Renderer* const passed_renderer, const std::string filePath,const int passedX,const int passedY,
+                   const int passedWidth,const int passedHeight,double* const passedCameraX,double* const passedCameraY,CollisionRect passed_CollisonRect) :
     renderer(passed_renderer), texture(nullptr), collisionTexture(nullptr), Collison_Rect(passed_CollisonRect)
 
     {
@@ -143,8 +143,8 @@ namespace atg {
 
     }
 
-    Sprite::Sprite(SDL_Renderer *passed_renderer,int tileType, SDL_Rect *tileClips, const std::string filePath, int passedX, int passedY,
-                   double *passedCameraX, double *passedCameraY,CollisionRect passed_CollisonRect) :
+    Sprite::Sprite(SDL_Renderer* const passed_renderer,const int tileType,SDL_Rect* const tileClips, const std::string filePath,const int passedX,const int passedY,
+                   double* const passedCameraX,double* const passedCameraY,CollisionRect passed_CollisonRect) :
         renderer(passed_renderer), _tileType(tileType), _tileClips(tileClips)
     {
 
@@ -336,7 +336,7 @@ namespace atg {
         SDL_DestroyTexture(collisionTexture);
     }
 
-    void Sprite::PlayAnimation(int beginFrame, int endFrame, int row, unsigned speed) {
+    void Sprite::PlayAnimation(const int beginFrame,const int endFrame,const int row,const unsigned speed) {
 
         if (animationDelay + speed < SDL_GetTicks()) {
             if (endFrame <= currentFrame)
@@ -354,7 +354,7 @@ namespace atg {
         }
     }
 
-    void Sprite::cropTile(int row, int col, int tileWidth, int tileHeight) {
+    void Sprite::cropTile(const int row,const int col,const int tileWidth,const int tileHeight) {
 
             cropRect.x = row;
             cropRect.y = col;
@@ -364,17 +364,17 @@ namespace atg {
     }
 
 
-    void Sprite::SetX(double passedX) {
+    void Sprite::SetX(const double passedX) {
         xPossition = passedX;
         t_Rect.x = int(xPossition - xOrigin);
     }
 
-    void Sprite::SetY(double passedY) {
+    void Sprite::SetY(const double passedY) {
         yPossition = passedY;
         t_Rect.y = int(yPossition - yOrigin);
     }
 
-    void Sprite::SetPossition(double passedX, double passedY) {
+    void Sprite::SetPossition(const double passedX,const double passedY) {
         xPossition = passedX;
         t_Rect.x = int(xPossition - xOrigin);
         yPossition = passedY;
@@ -397,11 +397,11 @@ namespace atg {
         return t_Rect.y;
     }
 
-    void Sprite::SetWidth(int passedWidth) {
+    void Sprite::SetWidth(const int passedWidth) {
         t_Rect.w = passedWidth;
     }
 
-    void Sprite::SetHeight(int passedHeight) {
+    void Sprite::SetHeight(const int passedHeight) {
         t_Rect.h = passedHeight;
     }
 
@@ -413,14 +413,14 @@ namespace atg {
         return t_Rect.h;
     }
 
-    void Sprite::SetOrigin(double passedX, double passedY) {
+    void Sprite::SetOrigin(const double passedX,const double passedY) {
         xOrigin = passedX;
         yOrigin = passedY;
 
         SetPossition(GetX(),GetY());
     }
 
-    void Sprite::SetupAnimation(int passedX, int passedY) {
+    void Sprite::SetupAnimation(const int passedX,const int passedY) {
         frameAmountX = passedX;
         frameAmountY = passedY;
     }
@@ -466,15 +466,15 @@ namespace atg {
     }
 
 
-    void Sprite::SetSpriteType(int type) {
+    void Sprite::SetSpriteType(const int type) {
 
-        t_Rect.w = _tileClips[type].w;
-        t_Rect.h = _tileClips[type].h;
+        t_Rect.w = _tileClips[ type ].w;
+        t_Rect.h = _tileClips[ type ].h;
 
-        cropRect.x = _tileClips[type].x;
-        cropRect.y = _tileClips[type].y;
-        cropRect.w = _tileClips[type].w;
-        cropRect.h = _tileClips[type].h;
+        cropRect.x = _tileClips[ type ].x;
+        cropRect.y = _tileClips[ type ].y;
+        cropRect.w = _tileClips[ type ].w;
+        cropRect.h = _tileClips[ type ].h;
     }
 
     int Sprite::GetTileType() const {
@@ -500,7 +500,7 @@ namespace atg {
         collider.GetRectangle().h);
     }
 
-    void Sprite::SetDebugMode(bool mode) {
+    void Sprite::SetDebugMode(const bool mode) {
         debugMode = mode;
     }
 }

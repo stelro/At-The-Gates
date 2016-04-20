@@ -26,8 +26,7 @@
 
 namespace atg {
 
-    Localmap::Localmap(std::shared_ptr<SdlInitializer> passed_csdl_setup,int screenWidth, int screenHeight, double *passedCameraX, double *passedCameraY,
-                       int *passedMouseX, int *passedMouseY) :
+    Localmap::Localmap(std::shared_ptr<SdlInitializer> passed_csdl_setup,const int screenWidth,const int screenHeight,double* const passedCameraX, double* const passedCameraY,int* const passedMouseX, int* const passedMouseY) :
     csdl_setup(passed_csdl_setup), CameraX(passedCameraX), CameraY(passedCameraY), MouseX(passedMouseX), MouseY(passedMouseY)
     {
 
@@ -234,8 +233,6 @@ namespace atg {
             for (int j = 0; j < TILES_COL; j++) {
 
                 map >> tileType;
-
-                //std::cout << tileType << " ";
 
                 tiles[i][j] = std::make_shared<Sprite>(csdl_setup->GetRenderer(), tileType, gTileClips, "assets/tiles1.png",
                                          TILE_WIDTH * j, TILE_HEIGHT * i, CameraX, CameraY,CollisionRect());

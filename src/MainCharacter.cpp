@@ -24,8 +24,8 @@
 
 
 namespace atg {
-    MainCharacter::MainCharacter(std::shared_ptr<SdlInitializer> passed_csdl_setup, int *passedMouseX, int *passedMouseY,
-                                 double *passedCameraX, double *passedCameraY,std::vector<std::shared_ptr<EnviromentObjects>> passed_envObjects) :
+    MainCharacter::MainCharacter(std::shared_ptr<SdlInitializer> passed_csdl_setup, int* const passedMouseX, int* const passedMouseY,
+                                 double* const passedCameraX, double* const passedCameraY,std::vector<std::shared_ptr<EnviromentObjects>> passed_envObjects) :
     csdl_setup(passed_csdl_setup), MouseX(passedMouseX), MouseY(passedMouseY) ,CameraX(passedCameraX), CameraY(passedCameraY),
     follow(false), stopAnimation(false)
     {
@@ -210,7 +210,7 @@ namespace atg {
 
     }
 
-    double MainCharacter::GetDistance(int x1, int y1, int x2, int y2) {
+    double MainCharacter::GetDistance(const int x1,const int y1,const int x2,const int y2) {
         double diffX = x1 - x2;
         double diffY = y1 - y2;
         double distance = sqrt((diffX * diffX) + (diffY * diffY));

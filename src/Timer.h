@@ -53,10 +53,10 @@ namespace atg {
         void pause();
         void unpause();
 
-        size_t get_ticks();
+        size_t get_ticks() const ;
 
-        bool is_started();
-        bool is_paused();
+        bool is_started() const ;
+        bool is_paused() const ;
     };
 }
 
